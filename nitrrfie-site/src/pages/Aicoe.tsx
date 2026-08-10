@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import '../styles/pages.css';
 import '../styles/inner-pages.css';
 import '../styles/coe.css';
@@ -148,12 +147,9 @@ export default function Aicoe() {
         <div className="page-hero__overlay" style={{ background: 'linear-gradient(45deg, rgba(15,23,42,0.9) 0%, rgba(30,58,138,0.7) 100%)' }} />
         <div className="page-hero__content">
           <img src="/uploads/AI-CoE-Logoo.webp" alt="AI-CoE Logo" style={{ width: '90%', maxWidth: '300px', height: 'auto', display: 'block', margin: '0 auto 1.5rem auto' }} />
-          <h1 className="page-hero__title" style={{ marginBottom: '1rem', textAlign: 'center' }}>AI Centre of Excellence (AI-CoE)</h1>
+          <h1 className="page-hero__title" style={{ marginBottom: '1rem', textAlign: 'center' }}>MeitY IndiaAI Chhattisgarh Centre of Excellence in Artificial Intelligence, NIT Raipur</h1>
           <p style={{ color: '#e2e8f0', fontSize: 'clamp(1rem, 4.5vw, 1.25rem)', marginTop: '1rem', maxWidth: '800px', textAlign: 'center', fontWeight: 500, margin: '1rem auto 0 auto' }}>
-            Transforming Industries Through Artificial Intelligence
-          </p>
-          <p className="page-hero__breadcrumb" style={{ marginTop: '2rem', textAlign: 'center' }}>
-            <Link to="/">Home</Link> &rsaquo; Centre of Excellence &rsaquo; AI-CoE
+            Advancing Multidisciplinary AI for Research, Innovation & Entrepreneurship in Mining, Minerals, Steel, Industries & Healthcare
           </p>
         </div>
       </div>
@@ -163,16 +159,16 @@ export default function Aicoe() {
         <div className="container">
           <div className="section-header section-header--center">
             <span className="section-eyebrow">Overview</span>
-            <h2 className="section-title--lg">About AI-CoE</h2>
+            <h2 className="section-title--lg">About</h2>
             <hr className="section-divider section-divider--center" />
           </div>
 
           <div className="text-editor" style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center', fontSize: '1.05rem', color: 'var(--color-text-dark)', lineHeight: '1.8' }}>
             <p>
-              The Artificial Intelligence Centre of Excellence (AI-CoE) at NIT Raipur Foundation for Innovation & Entrepreneurship (NITRRFIE) is envisioned as a premier innovation hub dedicated to advancing AI-driven research, startup incubation, workforce development, and industry adoption. Supported by the IndiaAI Mission, Ministry of Electronics and Information Technology, NIT Raipur, Government of Chhattisgarh and aligned with the vision of Viksit Bharat, the Centre aims to accelerate digital transformation across key sectors of Chhattisgarh and India.
+              The MeitY IndiaAI Chhattisgarh Centre of Excellence in Artificial Intelligence, at NIT Raipur Foundation for Innovation & Entrepreneurship (NITRRFIE) is envisioned as a premier innovation hub dedicated to advancing AI-driven research, startup incubation, workforce development, and industry adoption. Supported by the IndiaAI Mission, Ministry of Electronics and Information Technology, NIT Raipur, Government of Chhattisgarh and aligned with the vision of Viksit Bharat, the Centre aims to accelerate digital transformation across key sectors of Chhattisgarh and India.
             </p>
             <p style={{ marginTop: '20px' }}>
-              The AI Centre of Excellence serves as a bridge between academic research, industry challenges, government initiatives, and entrepreneurial innovation. By leveraging NIT Raipur’s academic expertise and strategic partnerships, the Centre develops scalable AI solutions that address real-world problems.
+              The Centre of Excellence serves as a bridge between academic research, industry challenges, government initiatives, and entrepreneurial innovation. By leveraging NIT Raipur’s academic expertise and strategic partnerships, the Centre develops scalable AI solutions that address real-world problems.
             </p>
             <div style={{ marginTop: '30px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px' }}>
               {['AI Research & Innovation', 'Industry-Academia Collaboration', 'Startup Incubation', 'AI Skill Development', 'AI Product Development', 'Sector-Specific AI Deployments'].map((tag, i) => (
