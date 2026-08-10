@@ -1,0 +1,410 @@
+/* ============================================================
+   About Page Styles (Redesigned for 2026 Layout)
+   ============================================================ */
+
+/* ---- Heading Polish ---- */
+.about-heading-wrap {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-heading-focused {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Watermark shadow text matching Elementor shadow_text_content */
+.about-watermark {
+  position: relative;
+}
+
+.about-watermark::before {
+  content: 'business';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-ui);
+  font-size: 5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  color: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="dark"] .about-watermark::before {
+  color: rgba(255, 255, 255, 0.02);
+}
+
+/* ---- Section 1: Intro Section ---- */
+.about-intro-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-intro-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+  margin-bottom: 24px;
+}
+
+.about-intro-text p {
+  margin-bottom: 20px;
+}
+
+/* ---- Section 2: Purpose Section ---- */
+.about-purpose-section {
+  background: var(--color-bg);
+}
+
+.about-purpose-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-purpose-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.about-purpose-card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  padding: 30px;
+  border-left: 4px solid var(--color-primary);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.about-purpose-card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+
+.about-purpose-card__num {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.about-purpose-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  line-height: 1.7;
+}
+
+/* Right-side Lightbulb Card */
+.about-purpose-media-card {
+  position: relative;
+  height: 520px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s;
+}
+
+.about-purpose-media-card:hover {
+  transform: scale(1.02);
+}
+
+.about-purpose-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+}
+
+.about-purpose-media-title {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* ---- Section 3: Our Approach & Strive Items ---- */
+.about-approach-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+.about-approach-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 12, 24, 0.85); /* Dark overlays for high contrast */
+  z-index: 1;
+}
+
+.about-approach-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.about-approach-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.about-approach-header h2 {
+  color: #fff;
+  font-size: 2.8rem;
+}
+
+.about-approach-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+.about-strive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.about-strive-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-card);
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, background-color 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-strive-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.about-strive-card__num {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.about-strive-card__divider {
+  width: 50px;
+  height: 2px;
+  background: var(--color-primary);
+  margin-bottom: 20px;
+  border: none;
+}
+
+.about-strive-card p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---- Section 4: Vision, Mission & Objectives ---- */
+.about-vmo-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+.about-vmo-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 17, 24, 0.88);
+  z-index: 1;
+}
+
+.about-vmo-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.about-vmo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.about-vmo-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-card);
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.about-vmo-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-vmo-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: rgba(255, 120, 46, 0.15);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.about-vmo-card h3 {
+  font-family: var(--font-ui);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.about-vmo-card p {
+  font-size: 0.975rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Objectives Card (Full Width) */
+.about-objectives-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.about-objectives-card h3 {
+  font-family: var(--font-ui);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.about-objectives-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.about-objectives-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-objectives-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.about-objectives-item__icon {
+  color: #2eb87f;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.about-objectives-item p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---- Partners Ribbon ---- */
+.about-partners-section {
+  background: var(--color-white);
+  padding: 60px 0;
+}
+
+.about-partners-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px 60px;
+}
+
+.about-partners-logo img {
+  height: 48px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(0.8);
+  opacity: 0.5;
+  transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+.about-partners-logo img.about-partners-logo--nitrr {
+  height: 64px;
+}
+
+.about-partners-logo img:hover {
+  filter: grayscale(0) contrast(1);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* ---- Responsive Adjustments ---- */
+@media (max-width: 1024px) {
+  .about-purpose-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-purpose-media-card {
+    height: 360px;
+  }
+  .about-strive-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .about-vmo-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-purpose-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-watermark::before {
+    font-size: 3.5rem;
+  }
+}
