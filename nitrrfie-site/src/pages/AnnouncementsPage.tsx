@@ -126,10 +126,11 @@ export default function AnnouncementsPage() {
   useEffect(() => {
     const fetchSheetData = async () => {
       try {
-        const sheetId = '1qUoxX0rGKa_rgIndjIOI1D7cJKK_g34ksVW4UQQsyxY';
+        const sheetId = import.meta.env.VITE_SHEET_ID || '1GVbcWInF5O85i-nPmvc2F2iJaYLSnveysaW8FxnS568';
         const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
 
         const response = await fetch(url);
+
         const text = await response.text();
 
         const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*?)\);/);

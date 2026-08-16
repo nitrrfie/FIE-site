@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlider from '../components/HeroSlider';
 // import NewsTicker from '../components/NewsTicker';
+import EventsCalendar from '../components/EventsCalendar';
 import '../styles/home.css';
 import { driveImageUrl } from '../utils/googleDrive';
 
@@ -298,6 +299,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Events Calendar and Highlights section */}
+      <EventsCalendar />
 
       {/* Highlights / Policies grid */}
       <section className="section home-programmes">

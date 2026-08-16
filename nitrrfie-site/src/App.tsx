@@ -17,6 +17,8 @@ const EntryExitPolicy = lazy(() => import('./pages/EntryExitPolicy'));
 const EcosystemPartners = lazy(() => import('./pages/EcosystemPartners'));
 const StartupPortfolio = lazy(() => import('./pages/StartupPortfolio'));
 const Aicoe = lazy(() => import('./pages/Aicoe'));
+const EventsPage = lazy(() => import('./pages/EventsPage'));
+
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -80,6 +82,8 @@ function App() {
           <Route path="/startup-portfolio" element={<StartupPortfolio />} />
           <Route path="/our-incubatees" element={<StartupPortfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/events" element={<EventsPage />} />
+
           
           {/* Catch-all */}
           <Route path="*" element={<Home />} />
