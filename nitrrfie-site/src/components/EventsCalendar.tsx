@@ -274,7 +274,7 @@ export default function EventsCalendar() {
           <div className="calendar-col-main">
             {/* Header */}
             <div className="calendar-header-wrap">
-              <h2 className="calendar-section-title">Institute Events</h2>
+              <h2 className="calendar-section-title">Events & Activities</h2>
               <div className="calendar-controls">
                 <button className="calendar-btn-nav" onClick={() => setViewDate(new Date(viewYear, viewMonth - 1, 1))} aria-label="Previous month">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><polyline points="15 18 9 12 15 6"/></svg>
