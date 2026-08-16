@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import '../styles/pages.css';
 import '../styles/events-page.css';
 
@@ -54,6 +55,7 @@ const toYYYYMMDD = (d: Date): string => {
 };
 
 export default function EventsPage() {
+  const navigate = useNavigate();
   const [events, setEvents] = useState<EventItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -128,8 +130,7 @@ export default function EventsPage() {
       if (ev.navLink.startsWith('http')) {
         window.open(ev.navLink, '_blank', 'noopener,noreferrer');
       } else {
-        // Handle path navigation via normal window transition if not external
-        window.location.href = ev.navLink;
+        navigate(ev.navLink);
       }
     }
   };
@@ -157,7 +158,7 @@ export default function EventsPage() {
         <div className="events-page-card__body">
           <div className="events-page-card__tags">
             <span className="events-page-card__tag">Event</span>
-            <span className={`events-page-card__mode-tag events-page-card__mode-tag--${ev.mode?.toLowerCase() === 'online' ? 'online' : 'offline'}`}>
+            <span className={`events-page-card__mode-tag events-page-card__mode-tag--${ev.mode?.toLowerCase() === 'online' ? 'online' : ev.mode?.toLowerCase() === 'offline' ? 'offline' : 'hybrid'}`}>
               {ev.mode || 'Offline'}
             </span>
             {isPast && <span className="events-page-card__status-tag">Completed</span>}
@@ -173,28 +174,63 @@ export default function EventsPage() {
                 <span>{ev.time}</span>
               </div>
             )}
-            {ev.venueOrLink && (
-              <div className="events-page-card__meta-item">
-                {ev.mode?.toLowerCase() === 'online' ? (
+            {ev.venueOrLink && (() => {
+              const modeLower = ev.mode?.toLowerCase() || '';
+              const isOnline = modeLower === 'online';
+              const isHybrid = modeLower === 'hybrid' || modeLower === 'both' || modeLower.includes('hybrid');
+
+              if (isHybrid) {
+                const parts = ev.venueOrLink.split(/[|;\n]+/);
+                const venueStr = parts[0]?.trim();
+                const linkStr = parts[1]?.trim();
+                return (
                   <>
+                    {venueStr && (
+                      <div className="events-page-card__meta-item">
+                        <svg className="events-page-card__meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path d="M12 2a8 8 0 00-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 00-8-8z"/>
+                          <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>{venueStr}</span>
+                      </div>
+                    )}
+                    {linkStr && (
+                      <div className="events-page-card__meta-item">
+                        <svg className="events-page-card__meta-icon events-page-card__meta-icon--green" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path d="M15 10l4.553-2.07A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+                        </svg>
+                        <a href={linkStr} target="_blank" rel="noopener noreferrer" className="events-page-card__link" onClick={e => e.stopPropagation()}>
+                          Join Online
+                        </a>
+                      </div>
+                    )}
+                  </>
+                );
+              }
+
+              if (isOnline) {
+                return (
+                  <div className="events-page-card__meta-item">
                     <svg className="events-page-card__meta-icon events-page-card__meta-icon--green" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                       <path d="M15 10l4.553-2.07A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
                     </svg>
                     <a href={ev.venueOrLink} target="_blank" rel="noopener noreferrer" className="events-page-card__link" onClick={e => e.stopPropagation()}>
                       Google Meet Link
                     </a>
-                  </>
-                ) : (
-                  <>
-                    <svg className="events-page-card__meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 2a8 8 0 00-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 00-8-8z"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    <span>{ev.venueOrLink}</span>
-                  </>
-                )}
-              </div>
-            )}
+                  </div>
+                );
+              }
+
+              return (
+                <div className="events-page-card__meta-item">
+                  <svg className="events-page-card__meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2a8 8 0 00-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 00-8-8z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>{ev.venueOrLink}</span>
+                </div>
+              );
+            })()}
           </div>
           <p className="events-page-card__desc">{ev.description}</p>
         </div>

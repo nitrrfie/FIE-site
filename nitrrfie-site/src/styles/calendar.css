@@ -457,6 +457,12 @@
   color: #2563eb;
 }
 
+.cal-ev-mode-tag--hybrid {
+  background-color: #faf5ff;
+  color: #7c3aed;
+}
+
+
 .cal-ev-title {
   font-family: var(--font-ui);
   font-size: 0.9rem;

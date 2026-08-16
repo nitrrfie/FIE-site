@@ -201,6 +201,12 @@
   color: #2563eb;
 }
 
+.events-page-card__mode-tag--hybrid {
+  background-color: #faf5ff;
+  color: #7c3aed;
+}
+
+
 .events-page-card__status-tag {
   display: inline-block;
   font-family: var(--font-ui);

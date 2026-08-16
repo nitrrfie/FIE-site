@@ -205,8 +205,41 @@ export default function EventsCalendar() {
 
   /* ── Render helpers ── */
   const renderVenue = (ev: EventItem) => {
-    const isOnline = ev.mode?.toLowerCase() === 'online';
     if (!ev.venueOrLink) return null;
+    const modeLower = ev.mode?.toLowerCase() || '';
+    const isOnline = modeLower === 'online';
+    const isHybrid = modeLower === 'hybrid' || modeLower === 'both' || modeLower.includes('hybrid');
+
+    if (isHybrid) {
+      const parts = ev.venueOrLink.split(/[|;\n]+/);
+      const venueStr = parts[0]?.trim();
+      const linkStr = parts[1]?.trim();
+
+      return (
+        <>
+          {venueStr && (
+            <div className="cal-ev-meta-row">
+              <svg className="cal-ev-meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2a8 8 0 00-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 00-8-8z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>{venueStr}</span>
+            </div>
+          )}
+          {linkStr && (
+            <div className="cal-ev-meta-row">
+              <svg className="cal-ev-meta-icon cal-ev-meta-icon--green" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path d="M15 10l4.553-2.07A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+              </svg>
+              <a href={linkStr} target="_blank" rel="noopener noreferrer" className="cal-ev-link" onClick={e => e.stopPropagation()}>
+                Join Online
+              </a>
+            </div>
+          )}
+        </>
+      );
+    }
+
     if (isOnline) {
       return (
         <div className="cal-ev-meta-row">
@@ -219,6 +252,7 @@ export default function EventsCalendar() {
         </div>
       );
     }
+
     return (
       <div className="cal-ev-meta-row">
         <svg className="cal-ev-meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -229,6 +263,7 @@ export default function EventsCalendar() {
       </div>
     );
   };
+
 
   return (
     <section className="section calendar-section">
@@ -347,7 +382,7 @@ export default function EventsCalendar() {
                       <div className="cal-ev-body">
                         <div className="cal-ev-tags">
                           <span className="cal-ev-tag">Event</span>
-                          <span className={`cal-ev-mode-tag cal-ev-mode-tag--${ev.mode?.toLowerCase() === 'online' ? 'online' : 'offline'}`}>
+                          <span className={`cal-ev-mode-tag cal-ev-mode-tag--${ev.mode?.toLowerCase() === 'online' ? 'online' : ev.mode?.toLowerCase() === 'offline' ? 'offline' : 'hybrid'}`}>
                             {ev.mode || 'TBD'}
                           </span>
                         </div>
