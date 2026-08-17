@@ -193,7 +193,9 @@ export default function AnnouncementsPage() {
     fetchSheetData();
   }, []);
 
-  const filtered = notices.filter(n => n.category === activeTab);
+  const filtered = notices.filter(
+  n => n.category === activeTab && n.id !== 'recruitment-accountant-admin-2026'
+);
 
   return (
     <main>
