@@ -151,10 +151,11 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setActivePopup('hiring');
+      setActivePopup('aicoe');
     }, 500);
     return () => clearTimeout(timer);
   }, []);
+
 
   const handleCloseHiring = () => {
     setActivePopup('aicoe');
