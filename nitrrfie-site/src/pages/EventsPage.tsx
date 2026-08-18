@@ -8,9 +8,10 @@ interface EventItem {
   id: string;
   date: string;        // YYYY-MM-DD
   displayDate: string; // dd/mm/yyyy
+  category: string;    // "Workshop" | "Seminar" | "Meeting" | "Training Program"
   title: string;
   time: string;
-  mode: string;        // "Online" | "Offline"
+  mode: string;        // "Online" | "Offline" | "Hybrid"
   venueOrLink: string; // address if offline, meet link if online
   description: string;
   navLink: string;
@@ -54,6 +55,28 @@ const toYYYYMMDD = (d: Date): string => {
   return `${y}-${m}-${day}`;
 };
 
+/* ── Category color mapping ── */
+const CATEGORY_COLORS: Record<string, string> = {
+  'Workshop': '#10b981',           // Green
+  'Seminar': '#3b82f6',            // Blue
+  'Meeting': '#f59e0b',            // Amber
+  'Training Program': '#8b5cf6',   // Purple
+  'Training': '#8b5cf6',           // Purple (fallback)
+};
+
+const getCategoryColor = (category: string): string => {
+  if (!category) return '#e11d48'; // Default red
+  // Try exact match first
+  if (CATEGORY_COLORS[category]) return CATEGORY_COLORS[category];
+  // Try case-insensitive partial match
+  const lowerCat = category.toLowerCase();
+  if (lowerCat.includes('workshop')) return CATEGORY_COLORS['Workshop'];
+  if (lowerCat.includes('seminar')) return CATEGORY_COLORS['Seminar'];
+  if (lowerCat.includes('meeting')) return CATEGORY_COLORS['Meeting'];
+  if (lowerCat.includes('training')) return CATEGORY_COLORS['Training Program'];
+  return '#e11d48'; // Default red
+};
+
 export default function EventsPage() {
   const navigate = useNavigate();
   const [events, setEvents] = useState<EventItem[]>([]);
@@ -76,6 +99,16 @@ export default function EventsPage() {
         const parsed: EventItem[] = rows
           .map((row): EventItem | null => {
             const cells = row.c ?? [];
+            // Column A (index 0) = ID
+            // Column B (index 1) = Date(dd/mm/yyyy)
+            // Column C (index 2) = Event Category
+            // Column D (index 3) = Title
+            // Column E (index 4) = Time
+            // Column F (index 5) = Mode (Online/Offline)
+            // Column G (index 6) = Venue/Link
+            // Column H (index 7) = Description
+            // Column I (index 8) = Nav Link
+            
             const rawDateStr = getCellStr(cells[1]);
             const rawDate = parseDDMMYYYY(rawDateStr);
             if (isNaN(rawDate.getTime())) return null;
@@ -87,12 +120,13 @@ export default function EventsPage() {
               id: getCellStr(cells[0]) || dateStr,
               date: dateStr,
               displayDate: `${dd}/${mm}/${yyyy}`,
-              title: getCellStr(cells[2]),
-              time: getCellStr(cells[3]),
-              mode: getCellStr(cells[4]),
-              venueOrLink: getCellStr(cells[5]),
-              description: getCellStr(cells[6]),
-              navLink: getCellStr(cells[7]),
+              category: getCellStr(cells[2]) || 'Event',
+              title: getCellStr(cells[3]),
+              time: getCellStr(cells[4]),
+              mode: getCellStr(cells[5]),
+              venueOrLink: getCellStr(cells[6]),
+              description: getCellStr(cells[7]),
+              navLink: getCellStr(cells[8]),
               rawDate,
             };
           })
@@ -157,7 +191,15 @@ export default function EventsPage() {
         </div>
         <div className="events-page-card__body">
           <div className="events-page-card__tags">
-            <span className="events-page-card__tag">Event</span>
+            <span 
+              className="events-page-card__tag events-page-card__category-tag"
+              style={{ 
+                backgroundColor: `${getCategoryColor(ev.category)}15`,
+                color: getCategoryColor(ev.category)
+              }}
+            >
+              {ev.category || 'Event'}
+            </span>
             <span className={`events-page-card__mode-tag events-page-card__mode-tag--${ev.mode?.toLowerCase() === 'online' ? 'online' : ev.mode?.toLowerCase() === 'offline' ? 'offline' : 'hybrid'}`}>
               {ev.mode || 'Offline'}
             </span>

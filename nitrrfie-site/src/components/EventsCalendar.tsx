@@ -7,9 +7,10 @@ interface EventItem {
   id: string;
   date: string;        // YYYY-MM-DD (normalised from Sheet)
   displayDate: string; // dd/mm/yyyy (raw from Sheet, for display)
+  category: string;    // "Workshop" | "Seminar" | "Meeting" | "Training Program"
   title: string;
   time: string;
-  mode: string;        // "Online" | "Offline"
+  mode: string;        // "Online" | "Offline" | "Hybrid"
   venueOrLink: string; // address if offline, meet link if online
   description: string;
   navLink: string;
@@ -58,6 +59,28 @@ const toYYYYMMDD = (d: Date): string => {
 
 const todayYYYYMMDD = (): string => toYYYYMMDD(new Date());
 
+/* ── Category color mapping ── */
+const CATEGORY_COLORS: Record<string, string> = {
+  'Workshop': '#10b981',           // Green
+  'Seminar': '#3b82f6',            // Blue
+  'Meeting': '#f59e0b',            // Amber
+  'Training Program': '#8b5cf6',   // Purple
+  'Training': '#8b5cf6',           // Purple (fallback)
+};
+
+const getCategoryColor = (category: string): string => {
+  if (!category) return '#e11d48'; // Default red
+  // Try exact match first
+  if (CATEGORY_COLORS[category]) return CATEGORY_COLORS[category];
+  // Try case-insensitive partial match
+  const lowerCat = category.toLowerCase();
+  if (lowerCat.includes('workshop')) return CATEGORY_COLORS['Workshop'];
+  if (lowerCat.includes('seminar')) return CATEGORY_COLORS['Seminar'];
+  if (lowerCat.includes('meeting')) return CATEGORY_COLORS['Meeting'];
+  if (lowerCat.includes('training')) return CATEGORY_COLORS['Training Program'];
+  return '#e11d48'; // Default red
+};
+
 /* ── Component ── */
 export default function EventsCalendar() {
   const todayStr = useMemo(() => todayYYYYMMDD(), []);
@@ -93,6 +116,16 @@ export default function EventsCalendar() {
         const parsed: EventItem[] = rows
           .map((row): EventItem | null => {
             const cells = row.c ?? [];
+            // Column A (index 0) = ID
+            // Column B (index 1) = Date(dd/mm/yyyy)
+            // Column C (index 2) = Event Category
+            // Column D (index 3) = Title
+            // Column E (index 4) = Time
+            // Column F (index 5) = Mode (Online/Offline)
+            // Column G (index 6) = Venue/Link
+            // Column H (index 7) = Description
+            // Column I (index 8) = Nav Link
+            
             const rawDateStr = getCellStr(cells[1]);
             const rawDate = parseDDMMYYYY(rawDateStr);
             if (isNaN(rawDate.getTime())) return null;
@@ -105,12 +138,13 @@ export default function EventsCalendar() {
               id: getCellStr(cells[0]) || dateStr,
               date: dateStr,
               displayDate: `${dd}/${mm}/${yyyy}`,
-              title: getCellStr(cells[2]),
-              time: getCellStr(cells[3]),
-              mode: getCellStr(cells[4]),
-              venueOrLink: getCellStr(cells[5]),
-              description: getCellStr(cells[6]),
-              navLink: getCellStr(cells[7]),
+              category: getCellStr(cells[2]) || 'Event',
+              title: getCellStr(cells[3]),
+              time: getCellStr(cells[4]),
+              mode: getCellStr(cells[5]),
+              venueOrLink: getCellStr(cells[6]),
+              description: getCellStr(cells[7]),
+              navLink: getCellStr(cells[8]),
               rawDate,
             };
           })
@@ -307,10 +341,20 @@ export default function EventsCalendar() {
                   const dayEvs = eventsByDate[cell.ds] ?? [];
                   const isSelected = cell.ds === selectedDay;
                   const isToday = cell.ds === todayStr;
+                  
+                  // Determine background color based on event categories
+                  let bgColor = '';
+                  if (dayEvs.length > 0 && !isSelected) {
+                    // If multiple events, use the first event's category color
+                    const category = dayEvs[0].category;
+                    bgColor = getCategoryColor(category);
+                  }
+                  
                   return (
                     <button
                       key={cell.ds}
                       onClick={() => handleCellClick(cell.ds)}
+                      style={bgColor ? { backgroundColor: bgColor, color: '#ffffff' } : {}}
                       className={[
                         'calendar-cell',
                         !cell.isCurrentMonth && 'calendar-cell--inactive',
@@ -320,7 +364,8 @@ export default function EventsCalendar() {
                       ].filter(Boolean).join(' ')}
                     >
                       <span className="calendar-cell-num">{cell.date.getDate()}</span>
-                      {dayEvs.length > 0 && <span className="calendar-cell-badge" />}
+                      {isToday && !isSelected && <span className="calendar-cell-today-dot" />}
+                      {dayEvs.length > 0 && !isToday && <span className="calendar-cell-badge" />}
                     </button>
                   );
                 })}
@@ -381,7 +426,15 @@ export default function EventsCalendar() {
                       {/* Content */}
                       <div className="cal-ev-body">
                         <div className="cal-ev-tags">
-                          <span className="cal-ev-tag">Event</span>
+                          <span 
+                            className="cal-ev-tag cal-ev-category-tag"
+                            style={{ 
+                              backgroundColor: `${getCategoryColor(ev.category)}15`,
+                              color: getCategoryColor(ev.category)
+                            }}
+                          >
+                            {ev.category || 'Event'}
+                          </span>
                           <span className={`cal-ev-mode-tag cal-ev-mode-tag--${ev.mode?.toLowerCase() === 'online' ? 'online' : ev.mode?.toLowerCase() === 'offline' ? 'offline' : 'hybrid'}`}>
                             {ev.mode || 'TBD'}
                           </span>
@@ -396,7 +449,7 @@ export default function EventsCalendar() {
                           </div>
                         )}
                         {renderVenue(ev)}
-                        <p className="cal-ev-desc">{ev.description}</p>
+                        {ev.description && <p className="cal-ev-desc">{ev.description}</p>}
                       </div>
                     </div>
                   );
