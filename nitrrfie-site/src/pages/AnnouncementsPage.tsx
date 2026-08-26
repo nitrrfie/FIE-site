@@ -79,14 +79,14 @@ const parseDateString = (dateStr: string): Date => {
 };
 
 const RECRUITMENT_NOTICE: NoticeItem = {
-  id: 'recruitment-accountant-admin-2026',
-  date: '28/07/2026',
-  title: 'Recruitment Notice – Accountant cum Administrator',
+  id: 'recruitment-stree-project-2026',
+  date: '25/08/2026',
+  title: 'Recruitment Notice – STREE Project',
   category: 'Notice',
-  link: 'https://drive.google.com/file/d/1H8gAXvGf6nHMUvFWgnZbWYOqlLiWaUIl/view?usp=sharing',
-  content: 'NITRRFIE invites online applications from eligible Indian nationals for the contractual position of Accountant cum Administrator. Candidates are advised to read the official recruitment notice carefully for details regarding eligibility, application process, important dates, and selection procedure before applying.',
+  link: 'https://drive.google.com/file/d/1wzjxyiheR88FuLHDCQU8CC79IhMuDV_K/view?usp=drive_link',
+  content: 'NIT Raipur Foundation for Innovation & Entrepreneurship (NITRRFIE) invites online applications for contractual positions under the STREE – Skill Development through Technological Resources for Empowering Economic Growth of Women project, sponsored by DSIR, Government of India. Open Positions: (1) Project Assistant / Technical (01 Post, ₹37,000/month) and (2) Field Worker / Helper (01 Post, ₹20,000/month). Place of posting: Raipur & Dhamtari. Candidates may apply for only one post. No application fee is required. Apply by: 21 September 2026, 5:00 PM IST.',
   buttonText: 'View Official Notification (PDF)',
-  applyLink: 'https://docs.google.com/forms/d/e/1FAIpQLSdLlQFvLldqrRen7kdhZ9C-F5il5BTwHzmU4FSGR8n1EUlN9g/viewform?usp=sharing&ouid=111435562742645601337',
+  applyLink: 'https://docs.google.com/forms/d/e/1FAIpQLSe4ZR6niqsA4RHG_vfhXn9KKV4LC_c9vpYa1W3CF-xO41omIw/viewform?usp=header',
 };
 
 export default function AnnouncementsPage() {

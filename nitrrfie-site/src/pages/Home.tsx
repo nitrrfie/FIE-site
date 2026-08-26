@@ -151,7 +151,7 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setActivePopup('aicoe');
+      setActivePopup('hiring');
     }, 500);
     return () => clearTimeout(timer);
   }, []);
@@ -388,16 +388,32 @@ export default function Home() {
               </svg>
             </button>
             <div className="popup-content">
-              <span className="popup-eyebrow">We're Hiring!</span>
-              <h2 className="popup-title" style={{ marginBottom: '16px' }}>We're Hiring!</h2>
+              <span className="popup-eyebrow">Recruitment Open</span>
+              <h2 className="popup-title" style={{ marginBottom: '16px', fontSize: '1.45rem', lineHeight: '1.3' }}>
+                Recruitment Notice – STREE Project
+              </h2>
               
-              <p className="popup-desc" style={{ marginBottom: '28px' }}>
-                Applications are now open for the position of Accountant cum Administrator at NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE). If you're a motivated professional with experience in accounting and administration, we'd love to hear from you.
-              </p>
+              <div className="popup-desc" style={{ marginBottom: '24px', fontSize: '0.88rem', lineHeight: '1.5', textAlign: 'left' }}>
+                <p style={{ marginBottom: '12px' }}>
+                  NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE) invites online applications for contractual positions under the <strong>STREE – Skill Development through Technological Resources for Empowering Economic Growth of Women</strong> project, sponsored by DSIR, Government of India.
+                </p>
+                <p style={{ margin: '12px 0 6px 0', fontWeight: 'bold' }}>Open Positions:</p>
+                <ul style={{ paddingLeft: '16px', listStyleType: 'disc', marginBottom: '12px' }}>
+                  <li>Project Assistant / Technical — 01 Post | ₹37,000/month</li>
+                  <li>Field Worker / Helper — 01 Post | ₹20,000/month</li>
+                </ul>
+                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px', marginTop: '12px', background: '#f8fafc', padding: '10px 12px', borderRadius: '6px', borderLeft: '3px solid var(--color-primary)' }}>
+                  <span>📅</span> <strong>Last Date: 21 September 2026, 5:00 PM IST</strong>
+                  <span>📍</span> <strong>Posting: Raipur &amp; Dhamtari</strong>
+                </div>
+                <p style={{ marginTop: '12px', fontSize: '0.78rem', color: '#64748b', fontStyle: 'italic' }}>
+                  * Candidates may apply for only one post. No application fee is required.
+                </p>
+              </div>
 
               <div className="popup-actions">
                 <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdLlQFvLldqrRen7kdhZ9C-F5il5BTwHzmU4FSGR8n1EUlN9g/viewform?usp=sharing&ouid=111435562742645601337"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe4ZR6niqsA4RHG_vfhXn9KKV4LC_c9vpYa1W3CF-xO41omIw/viewform?usp=header"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn--primary popup-btn"
@@ -405,13 +421,15 @@ export default function Home() {
                 >
                   Apply Now
                 </a>
-                <Link 
-                  to="/announcements?tab=Notice&open=recruitment-accountant-admin-2026" 
+                <a 
+                  href="https://drive.google.com/file/d/1wzjxyiheR88FuLHDCQU8CC79IhMuDV_K/view?usp=drive_link" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn--outline popup-btn popup-btn--details"
-                  onClick={() => setActivePopup(null)}
+                  onClick={handleCloseHiring}
                 >
                   View Recruitment Notice
-                </Link>
+                </a>
               </div>
             </div>
           </div>
