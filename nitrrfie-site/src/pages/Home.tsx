@@ -390,40 +390,43 @@ export default function Home() {
             <div className="popup-content">
               <span className="popup-eyebrow">Recruitment Open</span>
               <h2 className="popup-title" style={{ marginBottom: '16px', fontSize: '1.45rem', lineHeight: '1.3' }}>
-                Recruitment Notice – STREE Project
+                Recruitment Notice – MeitY/IndiaAI AI CoE Project
               </h2>
               
               <div className="popup-desc" style={{ marginBottom: '24px', fontSize: '0.88rem', lineHeight: '1.5', textAlign: 'left' }}>
                 <p style={{ marginBottom: '12px' }}>
-                  NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE) invites online applications for contractual positions under the <strong>STREE – Skill Development through Technological Resources for Empowering Economic Growth of Women</strong> project, sponsored by DSIR, Government of India.
+                  NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE) invites online applications from Indian citizens for contractual positions under the <strong>MeitY/IndiaAI Chhattisgarh Centre of Excellence in Artificial Intelligence (AI CoE)</strong> at NIT Raipur, sponsored by IndiaAI Mission, MeitY, Government of India.
                 </p>
-                <p style={{ margin: '12px 0 6px 0', fontWeight: 'bold' }}>Open Positions:</p>
+                <p style={{ margin: '12px 0 6px 0', fontWeight: 'bold' }}>Open Positions (05 Posts):</p>
                 <ul style={{ paddingLeft: '16px', listStyleType: 'disc', marginBottom: '12px' }}>
-                  <li>Project Assistant / Technical — 01 Post | ₹37,000/month</li>
-                  <li>Field Worker / Helper — 01 Post | ₹20,000/month</li>
+                  <li>Marketing &amp; Business Development Manager — 01 Post | Up to ₹70,000/month</li>
+                  <li>Junior Research Fellow (JRF) — 01 Post | Up to ₹40,000/month</li>
+                  <li>Web Development Engineer — 01 Post | Up to ₹35,000/month</li>
+                  <li>Support Staff — 02 Posts | Up to ₹18,000/month</li>
                 </ul>
                 <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px', marginTop: '12px', background: '#f8fafc', padding: '10px 12px', borderRadius: '6px', borderLeft: '3px solid var(--color-primary)' }}>
-                  <span>📅</span> <strong>Last Date: 21 September 2026, 5:00 PM IST</strong>
-                  <span>📍</span> <strong>Posting: Raipur &amp; Dhamtari</strong>
+                  <span>📅</span> <strong>Opening Date: 09 September 2026 (11:00 AM IST)</strong>
+                  <span>📅</span> <strong>Last Date: 30 September 2026, 5:00 PM IST</strong>
+                  <span>📍</span> <strong>Posting: NIT Raipur</strong>
                 </div>
                 <p style={{ marginTop: '12px', fontSize: '0.78rem', color: '#64748b', fontStyle: 'italic' }}>
-                  * Candidates may apply for only one post. No application fee is required.
+                  * Candidates may apply for only one post. Consolidated salary (80% fixed &amp; 20% variable). No application fee is required.
                 </p>
               </div>
 
               <div className="popup-actions">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSe4ZR6niqsA4RHG_vfhXn9KKV4LC_c9vpYa1W3CF-xO41omIw/viewform?usp=header"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
                   className="btn btn--primary popup-btn"
-                  onClick={handleCloseHiring}
+                  style={{ opacity: 0.85, cursor: 'not-allowed' }}
+                  onClick={() => alert('Online application link will be available soon. Please check back shortly.')}
+                  title="Online application link will be available soon"
                 >
-                  Apply Now
-                </a>
+                  Apply Now (Available Soon)
+                </button>
                 <a 
-                  href="https://drive.google.com/file/d/1wzjxyiheR88FuLHDCQU8CC79IhMuDV_K/view?usp=drive_link" 
-                  target="_blank"
+                  href="https://drive.google.com/file/d/1pc2XFschytrKu8luzYOLnkKNOkn8edF2/view?usp=drive_link" 
+                  target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn--outline popup-btn popup-btn--details"
                   onClick={handleCloseHiring}

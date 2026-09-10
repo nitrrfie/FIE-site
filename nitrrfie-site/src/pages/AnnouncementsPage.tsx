@@ -78,6 +78,38 @@ const parseDateString = (dateStr: string): Date => {
   return isNaN(parsed) ? new Date(0) : new Date(parsed);
 };
 
+const RECRUITMENT_AICOE_NOTICE: NoticeItem = {
+  id: 'recruitment-aicoe-project-2026',
+  date: '08/09/2026',
+  title: 'Recruitment Notice – MeitY/IndiaAI AI CoE Project',
+  category: 'Notice',
+  link: 'https://drive.google.com/file/d/1pc2XFschytrKu8luzYOLnkKNOkn8edF2/view?usp=drive_link',
+  content: `NIT Raipur Foundation for Innovation & Entrepreneurship (NITRRFIE) invites online applications from Indian citizens for engagement on a purely temporary, contractual basis for the project "MeitY/IndiaAI Chhattisgarh Centre of Excellence in Artificial Intelligence (AI CoE)" at NIT Raipur, sponsored by IndiaAI Mission, MeitY, Government of India.
+
+Project Details:
+• Title: MeitY AICoE — MeitY India AI Chhattisgarh Centre of Excellence in Artificial Intelligence at NIT Raipur
+• Sponsoring Agency: MeitY India AI Mission, Government of India
+• Duration: One Year (subject to extension of project and fund availability)
+• Principal Investigator (PI): Dr. Anuj Kumar Shukla, Asst. Professor, Dept. of Mechanical Engg., NIT Raipur & Faculty In-charge, NITRRFIE
+
+Open Positions (05 Posts):
+1. Marketing & Business Development Manager — 01 Post | Up to ₹70,000/- Per Month (Consolidated)
+2. Junior Research Fellow (JRF) — 01 Post | Up to ₹40,000/- Per Month (Consolidated)
+3. Web Development Engineer — 01 Post | Up to ₹35,000/- Per Month (Consolidated)
+4. Support Staff — 02 Posts | Up to ₹18,000/- Per Month (Consolidated)
+*(Consolidated compensation: 80% fixed & 20% variable)*
+
+Important Dates & Guidelines:
+• Opening Date of Online Application: 09.09.2026 (11:00 hrs IST)
+• Last Date for Online Application: 30.09.2026 (17:00 hrs IST)
+• Place of Posting: Raipur
+• Application Fee: Nil (No application fee required)
+• Mode of Application: Apply ONLINE only at www.nitrrfie.in (Application form link will be available soon). No hard copy required.
+• Note: A candidate may apply for only one post; applications are not transferable between posts.`,
+  buttonText: 'View Recruitment Notice (PDF)',
+  applyLink: '',
+};
+
 const RECRUITMENT_NOTICE: NoticeItem = {
   id: 'recruitment-stree-project-2026',
   date: '25/08/2026',
@@ -88,6 +120,11 @@ const RECRUITMENT_NOTICE: NoticeItem = {
   buttonText: 'View Official Notification (PDF)',
   applyLink: 'https://docs.google.com/forms/d/e/1FAIpQLSe4ZR6niqsA4RHG_vfhXn9KKV4LC_c9vpYa1W3CF-xO41omIw/viewform?usp=header',
 };
+
+const STATIC_NOTICES: NoticeItem[] = [
+  RECRUITMENT_AICOE_NOTICE,
+  RECRUITMENT_NOTICE,
+];
 
 export default function AnnouncementsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -180,8 +217,8 @@ export default function AnnouncementsPage() {
           return idB - idA;
         });
 
-        // Prepend our static recruitment notice
-        setNotices([RECRUITMENT_NOTICE, ...sorted]);
+        // Prepend our static recruitment notices
+        setNotices([...STATIC_NOTICES, ...sorted]);
       } catch (err: unknown) {
         console.error('Error fetching announcements:', err);
         setError('Failed to load announcements. Please try again later.');
@@ -243,7 +280,8 @@ export default function AnnouncementsPage() {
               {filtered.length > 0 ? (
                 filtered.map((n, i) => {
                   const cfg = categoryConfig[n.category];
-                  const excerpt = n.content.length > 120 ? n.content.substring(0, 120) + '...' : n.content;
+                  const cleanContent = n.content.replace(/\n+/g, ' ');
+                  const excerpt = cleanContent.length > 120 ? cleanContent.substring(0, 120) + '...' : cleanContent;
 
                   return (
                     <div
@@ -326,11 +364,11 @@ export default function AnnouncementsPage() {
               </div>
             )}
 
-            <div className="announcements-modal-body">
+            <div className="announcements-modal-body" style={{ whiteSpace: 'pre-line' }}>
               <p>{selectedNotice.content}</p>
             </div>
 
-            {(selectedNotice.link || selectedNotice.applyLink) && (
+            {(selectedNotice.link || selectedNotice.applyLink || selectedNotice.id === 'recruitment-aicoe-project-2026') && (
               <div className="announcements-modal-actions" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                 {selectedNotice.link && (
                   selectedNotice.link.startsWith('http') ? (
@@ -355,7 +393,7 @@ export default function AnnouncementsPage() {
                     </Link>
                   )
                 )}
-                {selectedNotice.applyLink && (
+                {selectedNotice.applyLink ? (
                   <a
                     href={selectedNotice.applyLink}
                     target="_blank"
@@ -365,7 +403,17 @@ export default function AnnouncementsPage() {
                     Apply Now
                     <ExternalIcon />
                   </a>
-                )}
+                ) : selectedNotice.id === 'recruitment-aicoe-project-2026' ? (
+                  <button
+                    type="button"
+                    disabled
+                    className="btn btn--primary announcements-modal-btn"
+                    style={{ opacity: 0.8, cursor: 'not-allowed' }}
+                    title="Online application link will be available soon"
+                  >
+                    Apply Now (Available Soon)
+                  </button>
+                ) : null}
               </div>
             )}
           </div>

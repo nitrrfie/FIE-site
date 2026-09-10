@@ -16,11 +16,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  // Close mobile menu on route change without cascading effect renders
+  const [prevLocationKey, setPrevLocationKey] = useState(location.key);
+  if (prevLocationKey !== location.key) {
+    setPrevLocationKey(location.key);
     setMobileOpen(false);
     setOpenDropdown(null);
-  }, [location]);
+  }
 
   // Close dropdown when clicking outside
   useEffect(() => {
