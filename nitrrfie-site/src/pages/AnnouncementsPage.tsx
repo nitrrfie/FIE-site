@@ -107,7 +107,7 @@ Important Dates & Guidelines:
 • Mode of Application: Apply ONLINE only at www.nitrrfie.in (Application form link will be available soon). No hard copy required.
 • Note: A candidate may apply for only one post; applications are not transferable between posts.`,
   buttonText: 'View Recruitment Notice (PDF)',
-  applyLink: '',
+  applyLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeoLQYt5ZYJLv6vDzmpJBXMzseDCkjzSLA9DcwhaNnv9NpGMw/viewform?usp=sharing&ouid=111435562742645601337',
 };
 
 const RECRUITMENT_NOTICE: NoticeItem = {
@@ -406,12 +406,10 @@ export default function AnnouncementsPage() {
                 ) : selectedNotice.id === 'recruitment-aicoe-project-2026' ? (
                   <button
                     type="button"
-                    disabled
                     className="btn btn--primary announcements-modal-btn"
-                    style={{ opacity: 0.8, cursor: 'not-allowed' }}
-                    title="Online application link will be available soon"
+                    title="Online application link"
                   >
-                    Apply Now (Available Soon)
+                    Apply Now
                   </button>
                 ) : null}
               </div>

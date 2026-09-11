@@ -415,18 +415,17 @@ export default function Home() {
               </div>
 
               <div className="popup-actions">
-                <button
-                  type="button"
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSeoLQYt5ZYJLv6vDzmpJBXMzseDCkjzSLA9DcwhaNnv9NpGMw/viewform?usp=header"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn--primary popup-btn"
-                  style={{ opacity: 0.85, cursor: 'not-allowed' }}
-                  onClick={() => alert('Online application link will be available soon. Please check back shortly.')}
-                  title="Online application link will be available soon"
                 >
-                  Apply Now (Available Soon)
-                </button>
-                <a 
+                  Apply Now
+                </a>
+                <a
                   href="https://drive.google.com/file/d/1pc2XFschytrKu8luzYOLnkKNOkn8edF2/view?usp=drive_link" 
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn--outline popup-btn popup-btn--details"
                   onClick={handleCloseHiring}
