@@ -56,9 +56,9 @@ const teamMembers: Member[] = [
     image: '/uploads/2024/09/SUNIL-DEWANGAN.jpg',
   },
   {
-    name: 'Mr. Ashok Sahu',
-    role: 'Accountant cum Administrator',
-    image: '/uploads/2024/09/ASHOK-SAHU.jpg',
+    name: 'Ms. Sonali Joshi',
+    role: 'Accountant',
+    image: '/uploads/SONALI-JOSHI.jpeg',
   },
   {
     name: 'Mr. Naresh Kumar',
