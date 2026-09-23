@@ -147,7 +147,7 @@ const stats = [
 
 export default function Home() {
   const [activeCultureIndex, setActiveCultureIndex] = useState(1);
-  const [activePopup, setActivePopup] = useState<'hiring' | 'stree' | 'aicoe' | null>(null);
+  const [activePopup, setActivePopup] = useState<'hiring' | 'aicoe' | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -157,10 +157,6 @@ export default function Home() {
   }, []);
 
   const handleCloseHiring = () => {
-    setActivePopup('stree');
-  };
-
-  const handleCloseStree = () => {
     setActivePopup('aicoe');
   };
 
@@ -432,65 +428,6 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="btn btn--outline popup-btn popup-btn--details"
                   onClick={handleCloseHiring}
-                >
-                  View Recruitment Notice
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* STREE Recruitment Pop-up Modal */}
-      {activePopup === 'stree' && (
-        <div className="popup-overlay" onClick={handleCloseStree}>
-          <div className="popup-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={handleCloseStree} aria-label="Close popup">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <div className="popup-content">
-              <span className="popup-eyebrow">Recruitment Open</span>
-              <h2 className="popup-title" style={{ marginBottom: '16px', fontSize: '1.45rem', lineHeight: '1.3' }}>
-                Recruitment Notice – STREE Project
-              </h2>
-              
-              <div className="popup-desc" style={{ marginBottom: '24px', fontSize: '0.88rem', lineHeight: '1.5', textAlign: 'left' }}>
-                <p style={{ marginBottom: '12px' }}>
-                  NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE) invites online applications for contractual positions under the <strong>STREE – Skill Development through Technological Resources for Empowering Economic Growth of Women</strong> project, sponsored by DSIR, Government of India.
-                </p>
-                <p style={{ margin: '12px 0 6px 0', fontWeight: 'bold' }}>Open Positions:</p>
-                <ul style={{ paddingLeft: '16px', listStyleType: 'disc', marginBottom: '12px' }}>
-                  <li>Project Assistant / Technical — 01 Post | ₹37,000/month</li>
-                  <li>Field Worker / Helper — 01 Post | ₹20,000/month</li>
-                </ul>
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px', marginTop: '12px', background: '#f8fafc', padding: '10px 12px', borderRadius: '6px', borderLeft: '3px solid var(--color-primary)' }}>
-                  <span>📅</span> <strong>Last Date: 21 September 2026, 5:00 PM IST</strong>
-                  <span>📍</span> <strong>Posting: Raipur &amp; Dhamtari</strong>
-                </div>
-                <p style={{ marginTop: '12px', fontSize: '0.78rem', color: '#64748b', fontStyle: 'italic' }}>
-                  * Candidates may apply for only one post. No application fee is required.
-                </p>
-              </div>
-
-              <div className="popup-actions">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSe4ZR6niqsA4RHG_vfhXn9KKV4LC_c9vpYa1W3CF-xO41omIw/viewform?usp=header"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--primary popup-btn"
-                  onClick={handleCloseStree}
-                >
-                  Apply Now
-                </a>
-                <a 
-                  href="https://drive.google.com/file/d/1wzjxyiheR88FuLHDCQU8CC79IhMuDV_K/view?usp=drive_link" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn--outline popup-btn popup-btn--details"
-                  onClick={handleCloseStree}
                 >
                   View Recruitment Notice
                 </a>
