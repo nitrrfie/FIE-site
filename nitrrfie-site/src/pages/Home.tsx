@@ -147,18 +147,14 @@ const stats = [
 
 export default function Home() {
   const [activeCultureIndex, setActiveCultureIndex] = useState(1);
-  const [activePopup, setActivePopup] = useState<'hiring' | 'aicoe' | null>(null);
+  const [activePopup, setActivePopup] = useState<'aicoe' | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setActivePopup('hiring');
+      setActivePopup('aicoe');
     }, 500);
     return () => clearTimeout(timer);
   }, []);
-
-  const handleCloseHiring = () => {
-    setActivePopup('aicoe');
-  };
 
   const handleCloseAicoe = () => {
     setActivePopup(null);
@@ -375,67 +371,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Hiring Pop-up Modal */}
-      {activePopup === 'hiring' && (
-        <div className="popup-overlay" onClick={handleCloseHiring}>
-          <div className="popup-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={handleCloseHiring} aria-label="Close popup">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <div className="popup-content">
-              <span className="popup-eyebrow">Recruitment Open</span>
-              <h2 className="popup-title" style={{ marginBottom: '16px', fontSize: '1.45rem', lineHeight: '1.3' }}>
-                Recruitment Notice – MeitY/IndiaAI AI CoE Project
-              </h2>
-              
-              <div className="popup-desc" style={{ marginBottom: '24px', fontSize: '0.88rem', lineHeight: '1.5', textAlign: 'left' }}>
-                <p style={{ marginBottom: '12px' }}>
-                  NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE) invites online applications from Indian citizens for contractual positions under the <strong>MeitY/IndiaAI Chhattisgarh Centre of Excellence in Artificial Intelligence (AI CoE)</strong> at NIT Raipur, sponsored by IndiaAI Mission, MeitY, Government of India.
-                </p>
-                <p style={{ margin: '12px 0 6px 0', fontWeight: 'bold' }}>Open Positions (05 Posts):</p>
-                <ul style={{ paddingLeft: '16px', listStyleType: 'disc', marginBottom: '12px' }}>
-                  <li>Marketing &amp; Business Development Manager — 01 Post | Up to ₹70,000/month</li>
-                  <li>Junior Research Fellow (JRF) — 01 Post | Up to ₹40,000/month</li>
-                  <li>Web Development Engineer — 01 Post | Up to ₹35,000/month</li>
-                  <li>Support Staff — 02 Posts | Up to ₹18,000/month</li>
-                </ul>
-                <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px', marginTop: '12px', background: '#f8fafc', padding: '10px 12px', borderRadius: '6px', borderLeft: '3px solid var(--color-primary)' }}>
-                  <span>📅</span> <strong>Opening Date: 09 September 2026 (11:00 AM IST)</strong>
-                  <span>📅</span> <strong>Last Date: 30 September 2026, 5:00 PM IST</strong>
-                  <span>📍</span> <strong>Posting: NIT Raipur</strong>
-                </div>
-                <p style={{ marginTop: '12px', fontSize: '0.78rem', color: '#64748b', fontStyle: 'italic' }}>
-                  * Candidates may apply for only one post. Consolidated salary (80% fixed &amp; 20% variable). No application fee is required.
-                </p>
-              </div>
-
-              <div className="popup-actions">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSeoLQYt5ZYJLv6vDzmpJBXMzseDCkjzSLA9DcwhaNnv9NpGMw/viewform?usp=header"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--primary popup-btn"
-                >
-                  Apply Now
-                </a>
-                <a
-                  href="https://drive.google.com/file/d/1pc2XFschytrKu8luzYOLnkKNOkn8edF2/view?usp=drive_link" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--outline popup-btn popup-btn--details"
-                  onClick={handleCloseHiring}
-                >
-                  View Recruitment Notice
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* AICOE Pop-up Modal */}
       {activePopup === 'aicoe' && (

@@ -78,41 +78,7 @@ const parseDateString = (dateStr: string): Date => {
   return isNaN(parsed) ? new Date(0) : new Date(parsed);
 };
 
-const RECRUITMENT_AICOE_NOTICE: NoticeItem = {
-  id: 'recruitment-aicoe-project-2026',
-  date: '08/09/2026',
-  title: 'Recruitment Notice – MeitY/IndiaAI AI CoE Project',
-  category: 'Notice',
-  link: 'https://drive.google.com/file/d/1pc2XFschytrKu8luzYOLnkKNOkn8edF2/view?usp=drive_link',
-  content: `NIT Raipur Foundation for Innovation & Entrepreneurship (NITRRFIE) invites online applications from Indian citizens for engagement on a purely temporary, contractual basis for the project "MeitY/IndiaAI Chhattisgarh Centre of Excellence in Artificial Intelligence (AI CoE)" at NIT Raipur, sponsored by IndiaAI Mission, MeitY, Government of India.
-
-Project Details:
-• Title: MeitY AICoE — MeitY India AI Chhattisgarh Centre of Excellence in Artificial Intelligence at NIT Raipur
-• Sponsoring Agency: MeitY India AI Mission, Government of India
-• Duration: One Year (subject to extension of project and fund availability)
-• Principal Investigator (PI): Dr. Anuj Kumar Shukla, Asst. Professor, Dept. of Mechanical Engg., NIT Raipur & Faculty In-charge, NITRRFIE
-
-Open Positions (05 Posts):
-1. Marketing & Business Development Manager — 01 Post | Up to ₹70,000/- Per Month (Consolidated)
-2. Junior Research Fellow (JRF) — 01 Post | Up to ₹40,000/- Per Month (Consolidated)
-3. Web Development Engineer — 01 Post | Up to ₹35,000/- Per Month (Consolidated)
-4. Support Staff — 02 Posts | Up to ₹18,000/- Per Month (Consolidated)
-*(Consolidated compensation: 80% fixed & 20% variable)*
-
-Important Dates & Guidelines:
-• Opening Date of Online Application: 09.09.2026 (11:00 hrs IST)
-• Last Date for Online Application: 30.09.2026 (17:00 hrs IST)
-• Place of Posting: Raipur
-• Application Fee: Nil (No application fee required)
-• Mode of Application: Apply ONLINE only at www.nitrrfie.in (Application form link will be available soon). No hard copy required.
-• Note: A candidate may apply for only one post; applications are not transferable between posts.`,
-  buttonText: 'View Recruitment Notice (PDF)',
-  applyLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeoLQYt5ZYJLv6vDzmpJBXMzseDCkjzSLA9DcwhaNnv9NpGMw/viewform?usp=sharing&ouid=111435562742645601337',
-};
-
-const STATIC_NOTICES: NoticeItem[] = [
-  RECRUITMENT_AICOE_NOTICE,
-];
+const STATIC_NOTICES: NoticeItem[] = [];
 
 export default function AnnouncementsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -221,7 +187,8 @@ export default function AnnouncementsPage() {
   const filtered = notices.filter(
     n => n.category === activeTab &&
          n.id !== 'recruitment-accountant-admin-2026' &&
-         n.id !== 'recruitment-stree-project-2026'
+         n.id !== 'recruitment-stree-project-2026' &&
+         n.id !== 'recruitment-aicoe-project-2026'
   );
 
   return (
@@ -358,7 +325,7 @@ export default function AnnouncementsPage() {
               <p>{selectedNotice.content}</p>
             </div>
 
-            {(selectedNotice.link || selectedNotice.applyLink || selectedNotice.id === 'recruitment-aicoe-project-2026') && (
+            {(selectedNotice.link || selectedNotice.applyLink) && (
               <div className="announcements-modal-actions" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
                 {selectedNotice.link && (
                   selectedNotice.link.startsWith('http') ? (
@@ -383,7 +350,7 @@ export default function AnnouncementsPage() {
                     </Link>
                   )
                 )}
-                {selectedNotice.applyLink ? (
+                {selectedNotice.applyLink && (
                   <a
                     href={selectedNotice.applyLink}
                     target="_blank"
@@ -393,15 +360,7 @@ export default function AnnouncementsPage() {
                     Apply Now
                     <ExternalIcon />
                   </a>
-                ) : selectedNotice.id === 'recruitment-aicoe-project-2026' ? (
-                  <button
-                    type="button"
-                    className="btn btn--primary announcements-modal-btn"
-                    title="Online application link"
-                  >
-                    Apply Now
-                  </button>
-                ) : null}
+                )}
               </div>
             )}
           </div>
