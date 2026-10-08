@@ -18,6 +18,16 @@ interface Startup {
 
 const startupsData: Startup[] = [
   {
+    id: 'Environova',
+    name: 'ENVIRONOVA Engineering & Consultancy Services Private Limited',
+    founder: 'Dr. Kshitij Upadhyay',
+    sector: 'Environmental Solutions',
+    state: 'Chhattisgarh',
+    cohort: '2025/2026',
+    logo: '/uploads/2025/12/environva.jpeg',
+    desc: 'ENVIRONOVA Engineering & Consultancy Services Private Limited is a multidisciplinary environmental engineering, sustainability, and environmental technology startup providing technical, scientific, research, and project management solutions across water and wastewater management, solid waste management, river rejuvenation, environmental monitoring, and pollution control. The company supports urban local bodies, government agencies, industries, and infrastructure developers in achieving environmental compliance, sustainability, and efficient resource management through scientific, data-driven, and implementation-oriented solutions, offering end-to-end planning, design, construction supervision, and operation and maintenance support for Water Treatment Plants (WTPs), Sewage Treatment Plants (STPs), Effluent Treatment Plants (ETPs), Common Effluent Treatment Plants (CETPs), sewerage systems, and environmental infrastructure projects under programs such as SBM 2.0, AMRUT, Jal Jeevan Mission, Namami Gange, NRCP, and River Rejuvenation initiatives. With a dedicated team of Ph.D. scholars, researchers, and domain experts, ENVIRONOVA undertakes advanced R&D in anaerobic wastewater treatment, microplastics pollution, waste management, environmental monitoring, GIS and remote sensing, nature-based treatment systems, and sustainable environmental technologies, while developing low-cost environmental monitoring solutions, customized treatment systems, and innovative products to improve affordability and operational efficiency. In addition to engineering consultancy, the company provides technical training, EdTech, digital learning, and capacity-building programs for government agencies, professionals, industries, and students, integrating engineering expertise, scientific research, technological innovation, and practical field implementation to deliver sustainable environmental solutions and contribute to environmental protection and sustainable development across India.',
+  },
+  {
     id: 'w2w',
     name: 'W2W Startup (W2W)',
     founder: 'Sumita Panjwani',
