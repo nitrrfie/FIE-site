@@ -7,8 +7,11 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [showApplyMenu, setShowApplyMenu] = useState(false);
+  const [mobileApplyOpen, setMobileApplyOpen] = useState(false);
   const location = useLocation();
   const navRef = useRef<HTMLElement>(null);
+  const applyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 40);
@@ -22,11 +25,16 @@ export default function Navbar() {
     setPrevLocationKey(location.key);
     setMobileOpen(false);
     setOpenDropdown(null);
+    setShowApplyMenu(false);
+    setMobileApplyOpen(false);
   }
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handler = (e: MouseEvent) => {
+      if (applyRef.current && !applyRef.current.contains(e.target as Node)) {
+        setShowApplyMenu(false);
+      }
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
       }
@@ -133,14 +141,61 @@ export default function Navbar() {
             >
               NITRRFIE Connect
             </a>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfSK5YM3qAJscTdMboNMh9FpP5F5bl3ikTcDjc4BAh9kb13Wg/viewform?usp=sharing&ouid=111435562742645601337"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="navbar__cta-btn"
-            >
-              Apply for Incubation
-            </a>
+            <div className="navbar__apply-wrapper" ref={applyRef}>
+              <button
+                type="button"
+                className={`navbar__cta-btn navbar__apply-trigger ${showApplyMenu ? 'navbar__apply-trigger--open' : ''}`}
+                onClick={() => setShowApplyMenu(!showApplyMenu)}
+                aria-haspopup="true"
+                aria-expanded={showApplyMenu}
+              >
+                <span>Apply for Incubation</span>
+                <svg
+                  className={`navbar__apply-caret ${showApplyMenu ? 'navbar__apply-caret--open' : ''}`}
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {showApplyMenu && (
+                <div className="navbar__apply-dropdown">
+                  <div className="navbar__apply-dropdown-header">Choose Incubation Program</div>
+                  <div className="navbar__apply-dropdown-list">
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSd5cwgZmelQC6zRhQXL26F7G2sQ7NO01nknx8RvtdZoJn47fg/viewform"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="navbar__apply-dropdown-item navbar__apply-dropdown-item--aicoe"
+                      onClick={() => setShowApplyMenu(false)}
+                    >
+                      <div className="navbar__apply-dropdown-item-content">
+                        <span className="navbar__apply-dropdown-item-title">AI-CoE</span>
+                        <span className="navbar__apply-dropdown-item-desc">Artificial Intelligence Centre of Excellence</span>
+                      </div>
+                      <svg className="navbar__apply-dropdown-arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSfSK5YM3qAJscTdMboNMh9FpP5F5bl3ikTcDjc4BAh9kb13Wg/viewform?usp=sharing&ouid=111435562742645601337"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="navbar__apply-dropdown-item navbar__apply-dropdown-item--nidhi"
+                      onClick={() => setShowApplyMenu(false)}
+                    >
+                      <div className="navbar__apply-dropdown-item-content">
+                        <span className="navbar__apply-dropdown-item-title">NIDHI TBI</span>
+                        <span className="navbar__apply-dropdown-item-desc">Technology Business Incubator</span>
+                      </div>
+                      <svg className="navbar__apply-dropdown-arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile Hamburger (visible on middle row on screens <= 1024px) */}
@@ -314,15 +369,47 @@ export default function Navbar() {
           >
             NITRRFIE Connect
           </a>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfSK5YM3qAJscTdMboNMh9FpP5F5bl3ikTcDjc4BAh9kb13Wg/viewform?usp=sharing&ouid=111435562742645601337"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="navbar__mobile-cta btn btn--primary"
-            style={{ marginTop: '10px' }}
-          >
-            Apply for Incubation
-          </a>
+          <div className="navbar__mobile-apply-wrapper" style={{ marginTop: '10px' }}>
+            <button
+              type="button"
+              className={`navbar__mobile-cta btn btn--primary navbar__mobile-apply-btn ${mobileApplyOpen ? 'navbar__mobile-apply-btn--open' : ''}`}
+              onClick={() => setMobileApplyOpen(!mobileApplyOpen)}
+            >
+              <span>Apply for Incubation</span>
+              <svg
+                className={`navbar__apply-caret ${mobileApplyOpen ? 'navbar__apply-caret--open' : ''}`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                style={{ width: '16px', height: '16px' }}
+              >
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+            {mobileApplyOpen && (
+              <div className="navbar__mobile-apply-sub">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSd5cwgZmelQC6zRhQXL26F7G2sQ7NO01nknx8RvtdZoJn47fg/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="navbar__mobile-apply-item"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span className="navbar__mobile-apply-title">AI-CoE</span>
+                  <span className="navbar__mobile-apply-subtext">Artificial Intelligence Centre of Excellence</span>
+                </a>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfSK5YM3qAJscTdMboNMh9FpP5F5bl3ikTcDjc4BAh9kb13Wg/viewform?usp=sharing&ouid=111435562742645601337"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="navbar__mobile-apply-item"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span className="navbar__mobile-apply-title">NIDHI TBI</span>
+                  <span className="navbar__mobile-apply-subtext">Technology Business Incubator</span>
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </header>

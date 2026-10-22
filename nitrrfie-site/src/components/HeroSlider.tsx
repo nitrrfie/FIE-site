@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/components.css';
 import { driveImageUrl } from '../utils/googleDrive';
@@ -46,6 +46,8 @@ const slides: Slide[] = [
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [showApplyOptions, setShowApplyOptions] = useState(false);
+  const heroApplyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -53,6 +55,26 @@ export default function HeroSlider() {
     }, 5500);
     return () => clearInterval(timer);
   }, []);
+
+  // Close hero apply dropdown on outside click
+  useEffect(() => {
+    const handleOutside = (e: MouseEvent) => {
+      if (heroApplyRef.current && !heroApplyRef.current.contains(e.target as Node)) {
+        setShowApplyOptions(false);
+      }
+    };
+    if (showApplyOptions) {
+      document.addEventListener('mousedown', handleOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleOutside);
+  }, [showApplyOptions]);
+
+  // Reset dropdown when slide changes without cascading effect renders
+  const [prevCurrent, setPrevCurrent] = useState(current);
+  if (prevCurrent !== current) {
+    setPrevCurrent(current);
+    setShowApplyOptions(false);
+  }
 
   const goTo = (idx: number) => {
     if (idx === current) return;
@@ -84,7 +106,52 @@ export default function HeroSlider() {
         {slide.subtitle && <p className="hero__subtitle">{slide.subtitle}</p>}
         {slide.cta && (
           <div className="hero__actions">
-            {slide.cta.external ? (
+            {slide.cta.label === 'Apply for Incubation' ? (
+              <div className="hero__apply-wrap" ref={heroApplyRef}>
+                <button
+                  type="button"
+                  className={`btn hero__btn hero__btn--primary hero__apply-trigger ${showApplyOptions ? 'hero__apply-trigger--open' : ''}`}
+                  onClick={() => setShowApplyOptions(!showApplyOptions)}
+                  aria-expanded={showApplyOptions}
+                >
+                  <span>Apply for Incubation</span>
+                  <svg
+                    className={`hero__caret ${showApplyOptions ? 'hero__caret--open' : ''}`}
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                {showApplyOptions && (
+                  <div className="hero__apply-dropdown">
+                    <div className="hero__apply-dropdown-header">Select Incubation Track</div>
+                    <div className="hero__apply-dropdown-buttons">
+                      <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSd5cwgZmelQC6zRhQXL26F7G2sQ7NO01nknx8RvtdZoJn47fg/viewform"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hero__dropdown-btn hero__dropdown-btn--aicoe"
+                        onClick={() => setShowApplyOptions(false)}
+                      >
+                        <span className="hero__dropdown-btn-title">AI-CoE</span>
+                        <span className="hero__dropdown-btn-subtitle">Artificial Intelligence Centre of Excellence</span>
+                      </a>
+                      <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfSK5YM3qAJscTdMboNMh9FpP5F5bl3ikTcDjc4BAh9kb13Wg/viewform?usp=sharing&ouid=111435562742645601337"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hero__dropdown-btn hero__dropdown-btn--nidhi"
+                        onClick={() => setShowApplyOptions(false)}
+                      >
+                        <span className="hero__dropdown-btn-title">NIDHI TBI</span>
+                        <span className="hero__dropdown-btn-subtitle">DST Technology Business Incubator</span>
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : slide.cta.external ? (
               <a
                 href={slide.cta.to}
                 target="_blank"

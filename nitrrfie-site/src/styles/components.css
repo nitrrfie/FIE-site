@@ -225,6 +225,120 @@
   border-color: #fff;
 }
 
+/* Hero Apply Button and Dropdown */
+.hero__apply-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.hero__apply-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.hero__caret {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hero__caret--open {
+  transform: rotate(180deg);
+}
+
+.hero__apply-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  max-width: 90vw;
+  background: rgba(18, 22, 28, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 120, 46, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 20;
+  animation: heroApplyFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+@keyframes heroApplyFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.hero__apply-dropdown-header {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffaa75;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.hero__apply-dropdown-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero__dropdown-btn {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  color: #ffffff;
+}
+
+.hero__dropdown-btn:hover {
+  background: rgba(255, 120, 46, 0.25);
+  border-color: #ff782e;
+  transform: translateY(-1px);
+}
+
+.hero__dropdown-btn-title {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__dropdown-btn-title::after {
+  content: '↗';
+  font-size: 0.9rem;
+  color: #ff782e;
+}
+
+.hero__dropdown-btn-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+}
+
 /* Dots */
 .hero__dots {
   position: absolute;
