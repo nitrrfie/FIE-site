@@ -175,7 +175,7 @@ export default function Home() {
             {/* Image */}
             <div className="home-about__img-wrap">
               <img
-                src={driveImageUrl("/uploads/intro.jpg")}
+                src={driveImageUrl("/uploads/intro.webp")}
                 alt="NITRRFIE Innovation Hub"
                 className="home-about__img"
                 loading="lazy"
