@@ -62,6 +62,11 @@ export const navItems: NavItem[] = [
     children: [
       { label: 'Notice', path: '/announcements' },
       {
+        label: 'NIT Raipur Store',
+        path: 'https://store.nitrrfie.in/',
+        external: true,
+      },
+      {
         label: 'Apply for Internship',
         path: 'https://docs.google.com/forms/d/e/1FAIpQLSdxsTL_dAOkdw2d-boXCrk3B513FtuM_kIJhSQJdv3HhOcfFA/viewform?usp=dialog',
         external: true,

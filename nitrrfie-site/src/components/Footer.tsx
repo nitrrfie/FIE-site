@@ -34,7 +34,7 @@ export default function Footer() {
                 <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/programmes">Programmes</Link></li>
                 <li><Link to="https://docs.google.com/forms/d/e/1FAIpQLSfSK5YM3qAJscTdMboNMh9FpP5F5bl3ikTcDjc4BAh9kb13Wg/viewform?usp=sharing&ouid=111435562742645601337">Apply Now</Link></li>
-                <li><a href="https://connect.nitrrfie.in" target="_blank" rel="noopener noreferrer">NITRRFIE Connect</a></li>
+                <li><a href="https://store.nitrrfie.in" target="_blank" rel="noopener noreferrer">NIT Raipur Store</a></li>
                 <li><Link to="/highlights">Highlights</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>

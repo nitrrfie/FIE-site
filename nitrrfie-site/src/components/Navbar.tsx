@@ -134,12 +134,12 @@ export default function Navbar() {
           {/* Action Buttons */}
           <div className="navbar__actions-group">
             <a
-              href="https://connect.nitrrfie.in"
+              href="https://store.nitrrfie.in"
               target="_blank"
               rel="noopener noreferrer"
               className="navbar__cta-btn navbar__cta-btn--connect"
             >
-              NITRRFIE Connect
+              NIT Raipur Store
             </a>
             <div className="navbar__apply-wrapper" ref={applyRef}>
               <button
@@ -361,13 +361,13 @@ export default function Navbar() {
             ))}
           </div>
           <a
-            href="https://connect.nitrrfie.in"
+            href="https://store.nitrrfie.in"
             target="_blank"
             rel="noopener noreferrer"
             className="navbar__mobile-cta btn btn--outline-dark"
             style={{ marginTop: '20px' }}
           >
-            NITRRFIE Connect
+            NIT Raipur Store
           </a>
           <div className="navbar__mobile-apply-wrapper" style={{ marginTop: '10px' }}>
             <button
