@@ -751,10 +751,30 @@
 }
 
 @media (max-width: 480px) {
-  .navbar__brand-sub {
-    display: none;
+  .navbar__brand {
+    flex-shrink: 1;
+    min-width: 0;
+    gap: 8px;
+    margin-right: 8px;
+  }
+  .navbar__brand-img {
+    height: 42px;
+    flex-shrink: 0;
   }
   .navbar__brand-text {
-    max-width: 160px;
+    max-width: none;
+    min-width: 0;
+    line-height: 1.2;
+  }
+  .navbar__brand-title,
+  .navbar__brand-sub {
+    display: block;
+    white-space: normal;
+  }
+  .navbar__brand-title {
+    font-size: 0.78rem;
+  }
+  .navbar__brand-sub {
+    font-size: 0.68rem;
   }
 }

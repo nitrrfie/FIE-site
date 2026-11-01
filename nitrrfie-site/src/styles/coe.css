@@ -2,6 +2,33 @@
    Centre of Excellence (MACIEET) Styles
    ============================================================ */
 
+
+/* ---- AI-CoE Hero Banner ---- */
+.aicoe-hero {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.aicoe-hero__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2744 / 1080;
+  display: block;
+  object-fit: cover;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 /* ---- Tripartite Partnership ---- */
 .coe-partners {
   display: grid;
@@ -57,6 +84,18 @@
 }
 
 /* ---- Proposed Labs Grid ---- */
+.aicoe-initiatives-heading { font-family: 'Magnolia Script', 'Brush Script MT', cursive; color: #0b2d68; }
+.aicoe-initiatives-subtitle { color: #475569; font-size: clamp(1.1rem, 2vw, 1.8rem); margin: 8px 0 28px; }
+.aicoe-initiative-card { display: grid; grid-template-columns: 108px 1fr; gap: 18px; align-items: start; min-height: 250px; padding: 26px; border: 1px solid #d8e2f0; border-radius: 22px; background: #fff; box-shadow: 0 8px 20px rgba(15, 42, 85, .06); }
+.aicoe-initiative-icon { display: grid; place-items: center; width: 100px; height: 100px; border-radius: 50%; color: #0b2d68; background: #e6f1ff; font-size: 3rem; }
+.aicoe-initiative-content { border-left: 3px solid #ff782e; padding-left: 18px; }
+.aicoe-initiative-content h3 { color: #0b2d68; font: 700 1.35rem/1.25 var(--font-ui); margin: 4px 0 18px; }
+.aicoe-initiative-content p { color: #172033; line-height: 1.55; margin-bottom: 18px; }
+.aicoe-initiative-content a { display: inline-flex; align-items: center; gap: 16px; border: 1px solid #0b2d68; border-radius: 999px; padding: 5px 6px 5px 16px; color: #0b2d68; font-weight: 700; }
+.aicoe-initiative-content a span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #0b2d68; color: white; }
+.aicoe-labs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+@media(max-width: 900px) { .aicoe-labs-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media(max-width: 600px) { .aicoe-labs-grid { grid-template-columns: 1fr; } .aicoe-initiative-card { grid-template-columns: 76px 1fr; padding: 18px; } .aicoe-initiative-icon { width: 72px; height: 72px; } }
 .coe-lab-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -242,4 +281,542 @@
   .coe-gallery-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---- AI-CoE About (Overview) Section ---- */
+.aicoe-about-section {
+  padding: 64px 0 52px;
+  background: #ffffff;
+}
+
+.aicoe-about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.aicoe-about__content {
+  text-align: left;
+}
+
+.aicoe-about__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.aicoe-about__eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.aicoe-about__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.2vw, 2.65rem);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.22;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.aicoe-about__subtitle {
+  font-family: var(--font-ui);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 600;
+  color: #ff782e;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.aicoe-about__divider {
+  width: 64px;
+  height: 3px;
+  background: var(--color-primary);
+  border: none;
+  margin: 0 0 24px 0;
+  border-radius: 2px;
+}
+
+.aicoe-about__body {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: #334155;
+  line-height: 1.85;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.aicoe-about__body p {
+  margin-bottom: 18px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.aicoe-about__body p:last-child {
+  margin-bottom: 0;
+}
+
+.aicoe-about__tags {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.aicoe-about__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #f8fafc;
+  border-radius: 24px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  border: 1px solid #e2e8f0;
+  transition: all 0.25s ease;
+}
+
+.aicoe-about__tag:hover {
+  background: #fff7ed;
+  border-color: #ff782e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 120, 46, 0.12);
+}
+
+.aicoe-about__tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+/* Right Column - Images Space */
+.aicoe-about__image-space {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  min-width: 0;
+}
+
+.aicoe-about__image-space > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1570 / 780;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.aicoe-about__image-card {
+  position: relative;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 20px;
+  padding: 32px 28px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.04);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aicoe-about__image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 56px rgba(15, 23, 42, 0.12);
+}
+
+.aicoe-about__image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.aicoe-about__image-frame img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.aicoe-about__image-card:hover .aicoe-about__image-frame img {
+  transform: scale(1.04);
+}
+
+.aicoe-about__image-meta {
+  width: 100%;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.aicoe-about__image-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(255, 120, 46, 0.1);
+  color: var(--color-primary);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aicoe-about__image-caption {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
+  text-align: center;
+}
+
+/* Secondary image slot */
+.aicoe-about__image-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.aicoe-about__image-thumb {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.aicoe-about__image-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aicoe-about__image-thumb:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+}
+
+@media (max-width: 992px) {
+  .aicoe-about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aicoe-about__image-space {
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+
+.aicoe-vm-section {
+  padding: 20px 0 60px;
+  background: #ffffff;
+}
+
+.aicoe-vm-wrapper {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.aicoe-vm-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2744 / 1080;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 36px rgba(15, 23, 42, 0.08));
+}
+
+@media (max-width: 768px) {
+  .aicoe-vm-section {
+    padding: 10px 0 40px;
+  }
+}
+
+/* ---- AI-CoE Funding Opportunities Banner (2744x1080) ---- */
+.aicoe-funding-section {
+  padding: 0 0 56px;
+  background: #ffffff;
+}
+
+.aicoe-funding-wrapper {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.aicoe-funding-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2744 / 1080;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 36px rgba(15, 23, 42, 0.08));
+}
+
+.aicoe-domains-section {
+  padding: 0 0 56px;
+  background: #ffffff;
+}
+
+.aicoe-domains-wrapper {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.aicoe-domains-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.aicoe-partner-section {
+  width: 100%;
+  padding: 0;
+  background: #ffffff;
+}
+
+.aicoe-partner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.aicoe-static-banner {
+  padding: 0 0 56px;
+  background: #ffffff;
+}
+
+.aicoe-static-banner img {
+  display: block;
+  width: 100%;
+  max-width: 1320px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.aicoe-static-banner--full {
+  padding: 0;
+}
+
+.aicoe-static-banner--full img {
+  max-width: none;
+}
+
+/* ---- Scroll motion (enabled by JS via .aicoe-motion; off for reduced motion) ---- */
+.aicoe-motion [data-reveal] {
+  opacity: 0;
+  transition: opacity 0.9s ease-out, scale 1s cubic-bezier(0.22, 1, 0.36, 1);
+  scale: 0.97;
+}
+
+.aicoe-motion [data-reveal].is-inview {
+  opacity: 1;
+  scale: 1;
+}
+
+.aicoe-motion [data-parallax] {
+  /* Lags behind the scroll: +speed when entering from below, -speed when leaving above */
+  translate: 0 calc(var(--p, 0) * var(--speed, 0px) * -1);
+  will-change: translate;
+}
+
+.aicoe-motion .aicoe-static-banner--full {
+  overflow: hidden;
+}
+
+.aicoe-pillars-section {
+  padding: 0 0 56px;
+  background: #ffffff;
+}
+
+.aicoe-pillars-section img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .aicoe-funding-section,
+  .aicoe-domains-section {
+    padding-bottom: 36px;
+  }
+}
+
+
+/* ---- AI-CoE mobile ----
+   Banners are text-baked images: show them edge to edge at full screen width
+   (no container gutters) so they are as large and clear as the screen allows. */
+@media (max-width: 768px) {
+  .aicoe-static-banner,
+  .aicoe-motion .aicoe-static-banner--full {
+    overflow: visible;
+    padding: 0 0 12px;
+  }
+
+  .aicoe-static-banner .container {
+    padding: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .aicoe-static-banner img,
+  .aicoe-static-banner--full img {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  .aicoe-static-banner--full {
+    padding: 0;
+  }
+
+  .aicoe-motion [data-parallax] {
+    translate: none;
+    will-change: auto;
+  }
+
+  .aicoe-about-section {
+    padding: 36px 0 28px;
+  }
+
+  .aicoe-about-grid {
+    gap: 28px;
+  }
+
+  .aicoe-about__title {
+    font-size: 1.65rem;
+  }
+
+  .aicoe-about__subtitle {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .aicoe-about__divider {
+    margin-bottom: 18px;
+  }
+
+  .aicoe-about__body,
+  .aicoe-about__body p {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .aicoe-about__image-space {
+    max-width: none;
+    gap: 14px;
+  }
+}
+
+/* ---- AI-CoE gallery auto slider ---- */
+.aicoe-gallery {
+  padding: 0 0 56px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.aicoe-gallery__viewport {
+  mask: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+.aicoe-gallery__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: aicoe-gallery-scroll 40s linear infinite;
+}
+
+.aicoe-gallery__viewport:hover .aicoe-gallery__track {
+  animation-play-state: paused;
+}
+
+.aicoe-gallery__item {
+  flex: 0 0 auto;
+  width: clamp(280px, 38vw, 560px);
+  aspect-ratio: 1570 / 1080;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
+}
+
+.aicoe-gallery__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Track holds two copies of the list plus a trailing gap, so shift by half incl. gap */
+@keyframes aicoe-gallery-scroll {
+  to { transform: translateX(calc(-50% - 10px)); }
+}
+
+@media (max-width: 768px) {
+  .aicoe-gallery { padding-bottom: 20px; }
+  .aicoe-gallery__track { gap: 12px; animation-duration: 30s; }
+  .aicoe-gallery__item { width: 78vw; border-radius: 10px; }
+  @keyframes aicoe-gallery-scroll {
+    to { transform: translateX(calc(-50% - 6px)); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aicoe-gallery__track { animation: none; overflow-x: auto; }
+  .aicoe-gallery__viewport { overflow-x: auto; }
 }
