@@ -5,6 +5,7 @@ import HeroSlider from '../components/HeroSlider';
 import EventsCalendar from '../components/EventsCalendar';
 import '../styles/home.css';
 import { driveImageUrl } from '../utils/googleDrive';
+import { FDP_REGISTER_LINK } from './AnnouncementsPage';
 
 /* ── Inline SVG icon components ── */
 const IconBuilding = () => (
@@ -147,14 +148,18 @@ const stats = [
 
 export default function Home() {
   const [activeCultureIndex, setActiveCultureIndex] = useState(1);
-  const [activePopup, setActivePopup] = useState<'aicoe' | null>(null);
+  const [activePopup, setActivePopup] = useState<'fdp' | 'aicoe' | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setActivePopup('aicoe');
+      setActivePopup('fdp');
     }, 500);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleCloseFdp = () => {
+    setActivePopup('aicoe');
+  };
 
   const handleCloseAicoe = () => {
     setActivePopup(null);
@@ -371,6 +376,38 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FDP Pop-up Modal */}
+      {activePopup === 'fdp' && (
+        <div className="popup-overlay" onClick={handleCloseFdp}>
+          <div className="popup-modal popup-modal--banner" onClick={(e) => e.stopPropagation()}>
+            <button className="popup-close" onClick={handleCloseFdp} aria-label="Close popup">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <img className="popup-banner" src="/uploads/iitg.webp" alt="E&ICT Academy IIT Guwahati and NITRRFIE Faculty Development Program" />
+            <div className="popup-content">
+              <span className="popup-eyebrow">Registrations Open</span>
+              <h2 className="popup-title">One Week Faculty Development Program</h2>
+              <h3 className="popup-subtitle">AI for Biomedical Signal Processing &amp; Digital Health</h3>
+              <div className="popup-domains">
+                <div className="popup-domain-tag">23rd - 27th November 2026</div>
+                <div className="popup-domain-tag">NIT Raipur</div>
+              </div>
+              <div className="popup-actions">
+                <a href={FDP_REGISTER_LINK} target="_blank" rel="noopener noreferrer" className="btn btn--primary popup-btn">
+                  Register Now
+                </a>
+                <Link to="/announcements?tab=Notice&open=fdp-ai-biomedical-signal-2026" className="btn btn--outline popup-btn popup-btn--details" onClick={() => setActivePopup(null)}>
+                  View Details
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* AICOE Pop-up Modal */}
       {activePopup === 'aicoe' && (

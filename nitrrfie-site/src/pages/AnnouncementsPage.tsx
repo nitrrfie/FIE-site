@@ -13,6 +13,7 @@ interface NoticeItem {
   imageLink?: string;
   buttonText?: string;
   applyLink?: string;
+  applyText?: string;
 }
 
 interface GvizCell {
@@ -78,7 +79,47 @@ const parseDateString = (dateStr: string): Date => {
   return isNaN(parsed) ? new Date(0) : new Date(parsed);
 };
 
-const STATIC_NOTICES: NoticeItem[] = [];
+export const FDP_REGISTER_LINK = 'https://eict.iitg.ac.in/academy/programmes';
+
+const STATIC_NOTICES: NoticeItem[] = [
+  {
+    id: 'fdp-ai-biomedical-signal-2026',
+    date: '04/11/2026',
+    title: 'One Week FDP on "Artificial Intelligence for Biomedical Signal Processing and Digital Health" (23rd - 27th November 2026)',
+    category: 'Notice',
+    imageLink: '/uploads/iitg.webp',
+    applyLink: FDP_REGISTER_LINK,
+    applyText: 'Register Now',
+    content: `E&ICT Academy, IIT Guwahati, in association with NITRRFIE (AI CoE) @ National Institute of Technology Raipur, is organizing a One Week Faculty Development Program (FDP) on "Artificial Intelligence for Biomedical Signal Processing and Digital Health".
+
+Dates: 23rd - 27th November 2026
+Venue: National Institute of Technology Raipur (NITRR), G.E. Road, Raipur, Chhattisgarh - 492010
+
+Objectives:
+To develop the fundamentals of AI and machine learning for biomedical signal processing, disease diagnosis, patient monitoring, clinical decision support, wearable health technologies, and digital healthcare, with hands-on training in AI tools for biomedical data analysis.
+
+About E&ICT Academy:
+Electronics and ICT Academy is an initiative of the Ministry of Electronics and Information Technology (MeitY), Govt. of India for conducting various Faculty / Research Scholar Development Programmes in IT, Electronics & Communication, Product Design and Manufacturing, with hands-on training and project work using the latest software tools and systems.
+
+Organizing Committee - IIT Guwahati:
+Principal Investigator: Prof. Gaurav Trivedi, Dept. of Electronics & Electrical Engineering, IIT Guwahati
+Course Coordinator: Prof. Manas Kamal Bhuyan, Dept. of Electronics & Electrical Engineering, IIT Guwahati
+
+Organizing Committee - NIT Raipur:
+Chief Patron: Prof. N. V. Ramana Rao, Director & Professor, Dept. of Civil Engineering, NIT Raipur
+Convenor: Dr. Kapil Kumar Soni, Assistant Professor, Dept. of Information Technology; Spoke Institute Coordinator (NITRR), E&ICT Academy IIT Guwahati
+Co-Convenor: Dr. Anuj Kumar Shukla, Assistant Professor, Dept. of Mechanical Engineering; Professor In-charge (Incubation Cell), NITRRFIE, NIT Raipur
+Coordinators: Dr. Gyanendra Kumar Verma (Associate Professor, Dept. of Information Technology) and Dr. Arindam Bit (Associate Professor, Dept. of Biomedical Engineering), NIT Raipur
+
+How to Register:
+Visit the registration link, enter the necessary details, and you will be redirected to the payment gateway to complete the registration process.
+Link: ${FDP_REGISTER_LINK}
+
+Contact:
++91-361-2583182 (O), +91-7086502139 (M)
+eictacad@iitg.ac.in, eictacad@gmail.com`,
+  },
+];
 
 export default function AnnouncementsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -188,7 +229,8 @@ export default function AnnouncementsPage() {
     n => n.category === activeTab &&
          n.id !== 'recruitment-accountant-admin-2026' &&
          n.id !== 'recruitment-stree-project-2026' &&
-         n.id !== 'recruitment-aicoe-project-2026'
+         n.id !== 'recruitment-aicoe-project-2026' &&
+         !n.title.includes('Connect Platform Launched')
   );
 
   return (
@@ -357,7 +399,7 @@ export default function AnnouncementsPage() {
                     rel="noopener noreferrer"
                     className="btn btn--primary announcements-modal-btn"
                   >
-                    Apply Now
+                    {selectedNotice.applyText || 'Apply Now'}
                     <ExternalIcon />
                   </a>
                 )}

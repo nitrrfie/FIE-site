@@ -696,6 +696,23 @@
   color: #0f172a;
 }
 
+.popup-modal--banner {
+  padding: 0 0 30px;
+  overflow: hidden;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+.popup-modal--banner .popup-content {
+  padding: 22px 30px 0;
+}
+
+.popup-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @keyframes popupFadeIn {
   to {
     background-color: rgba(15, 23, 42, 0.75);
@@ -712,6 +729,12 @@
 @media (max-width: 480px) {
   .popup-modal {
     padding: 30px 20px;
+  }
+  .popup-modal--banner {
+    padding: 0 0 24px;
+  }
+  .popup-modal--banner .popup-content {
+    padding: 18px 20px 0;
   }
   .popup-title {
     font-size: 1.35rem;
