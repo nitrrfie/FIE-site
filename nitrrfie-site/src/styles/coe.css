@@ -820,3 +820,650 @@
   .aicoe-gallery__track { animation: none; overflow-x: auto; }
   .aicoe-gallery__viewport { overflow-x: auto; }
 }
+
+/* ============================================================
+   Redesigned MACIEET Centre of Excellence Styles
+   ============================================================ */
+
+/* ---- MACIEET Hero Banner (2744x1080 Aspect Ratio Space) ---- */
+.macieet-hero {
+  position: relative;
+  width: 100%;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.macieet-hero__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2744 / 1080;
+  display: block;
+  object-fit: cover;
+}
+
+.macieet-hero__placeholder {
+  width: 100%;
+  aspect-ratio: 2744 / 1080;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #0b2d68 0%, #1e3a8a 50%, #0f172a 100%);
+  color: #ffffff;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+}
+
+.macieet-hero__placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 120, 46, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.macieet-hero__placeholder-logo {
+  max-width: min(130px, 16vw);
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  background: #ffffff;
+  padding: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.macieet-hero__placeholder-title {
+  font-family: var(--font-heading, 'Inter', sans-serif);
+  font-size: clamp(1.1rem, 2.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  max-width: 860px;
+  line-height: 1.3;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.macieet-hero__placeholder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffedd5;
+}
+
+/* ---- MACIEET About Section ---- */
+.macieet-about-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.macieet-about__body {
+  font-size: 1.05rem;
+  color: #334155;
+  line-height: 1.8;
+}
+
+.macieet-about__lead {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #0f172a;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.macieet-about__emblem-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(11, 45, 104, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.macieet-about__emblem-img {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+  margin-bottom: 20px;
+}
+
+.macieet-about__emblem-title {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0b2d68;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.macieet-about__emblem-sub {
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* ---- Established Jointly By ---- */
+.macieet-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.macieet-partner-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 36px 28px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.macieet-partner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--partner-accent, #0b2d68);
+}
+
+.macieet-partner-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
+  border-color: #cbd5e1;
+}
+
+.macieet-partner-card__logo-frame {
+  height: 84px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  padding: 8px;
+}
+
+.macieet-partner-card__logo {
+  max-height: 76px;
+  max-width: 190px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.macieet-partner-card:hover .macieet-partner-card__logo {
+  transform: scale(1.05);
+}
+
+.macieet-partner-card__title {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0b2d68;
+  margin-bottom: 12px;
+}
+
+.macieet-partner-card__desc {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ---- Proposed Design Auto-scroll Marquee ---- */
+.macieet-design-slider {
+  padding: 20px 0 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.macieet-design-viewport {
+  mask: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  overflow: hidden;
+}
+
+.macieet-design-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: macieet-design-scroll 35s linear infinite;
+}
+
+.macieet-design-viewport:hover .macieet-design-track {
+  animation-play-state: paused;
+}
+
+.macieet-design-item {
+  flex: 0 0 auto;
+  width: clamp(280px, 36vw, 540px);
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #f8fafc;
+}
+
+.macieet-design-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+}
+
+.macieet-design-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.macieet-design-item__badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+@keyframes macieet-design-scroll {
+  to { transform: translateX(calc(-50% - 11px)); }
+}
+
+@media (max-width: 768px) {
+  .macieet-design-track { gap: 12px; animation-duration: 25s; }
+  .macieet-design-item { width: 78vw; border-radius: 10px; }
+  @keyframes macieet-design-scroll {
+    to { transform: translateX(calc(-50% - 6px)); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macieet-design-track { animation: none; overflow-x: auto; }
+}
+
+/* ---- Governing Board ---- */
+.macieet-board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 40px;
+}
+
+.macieet-board-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px 22px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.macieet-board-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+  border-color: #cbd5e1;
+}
+
+.macieet-board-card__avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 18px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 14px rgba(11, 45, 104, 0.15);
+  background: #f1f5f9;
+  flex-shrink: 0;
+}
+
+.macieet-board-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.macieet-board-card:hover .macieet-board-card__avatar img {
+  transform: scale(1.06);
+}
+
+.macieet-board-card__name {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #0b2d68;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.macieet-board-card__role {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ---- Proposed Facilities & Labs ---- */
+.macieet-labs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 36px;
+}
+
+.macieet-lab-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #ff782e;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-top-color 0.25s ease;
+}
+
+.macieet-lab-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
+  border-top-color: #0b2d68;
+}
+
+.macieet-lab-card__num {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-family: var(--font-heading, sans-serif);
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #0b2d68;
+  opacity: 0.08;
+  line-height: 1;
+  user-select: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.macieet-lab-card__tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ea580c;
+  background: #fff4ed;
+  border: 1px solid #fed7aa;
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
+
+.macieet-lab-card:hover .macieet-lab-card__num {
+  opacity: 0.16;
+  transform: scale(1.1);
+}
+
+.macieet-lab-card__title {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0b2d68;
+  margin-bottom: 10px;
+  line-height: 1.35;
+  padding-right: 28px;
+}
+
+.macieet-lab-card__desc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.55;
+}
+
+/* ---- Static Gallery (4 Photos, No scroll) ---- */
+.macieet-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.macieet-gallery-item {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  cursor: pointer;
+  background: #f8fafc;
+}
+
+.macieet-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.macieet-gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.macieet-gallery-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(11, 45, 104, 0.8) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.macieet-gallery-item:hover .macieet-gallery-item__overlay {
+  opacity: 1;
+}
+
+.macieet-gallery-item__caption {
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* ---- Contact Strip ---- */
+.macieet-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.macieet-contact-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.macieet-contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+}
+
+.macieet-contact-card__icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: #fff3ec;
+  color: #ff782e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.macieet-contact-card__content h3 {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0b2d68;
+  margin-bottom: 6px;
+}
+
+.macieet-contact-card__content p {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.macieet-contact-card__content a {
+  color: #0b2d68;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.macieet-contact-card__content a:hover {
+  color: #ff782e;
+  text-decoration: underline;
+}
+
+.macieet-contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.macieet-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #0b2d68;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(11, 45, 104, 0.25);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.macieet-btn-primary:hover {
+  background: #ff782e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 120, 46, 0.35);
+  color: #ffffff;
+}
+
+.macieet-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #0b2d68;
+  border: 1.5px solid #0b2d68;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.macieet-btn-secondary:hover {
+  background: #f1f5f9;
+  border-color: #ff782e;
+  color: #ff782e;
+  transform: translateY(-2px);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .macieet-about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .macieet-about__emblem-card {
+    max-width: 420px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .macieet-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .macieet-board-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .macieet-labs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .macieet-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .macieet-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .macieet-partners-grid {
+    grid-template-columns: 1fr;
+  }
+  .macieet-board-grid {
+    grid-template-columns: 1fr;
+  }
+  .macieet-labs-grid {
+    grid-template-columns: 1fr;
+  }
+  .macieet-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

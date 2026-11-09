@@ -4,6 +4,10 @@
   "description": "New website for nitrrfie",
   "main": "index.js",
   "scripts": {
+    "dev": "npm --prefix nitrrfie-site run dev",
+    "build": "npm --prefix nitrrfie-site run build",
+    "lint": "npm --prefix nitrrfie-site run lint",
+    "preview": "npm --prefix nitrrfie-site run preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
