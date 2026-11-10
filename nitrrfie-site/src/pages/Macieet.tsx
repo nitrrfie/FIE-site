@@ -143,7 +143,6 @@ const CloseIcon = () => (
 
 export default function Macieet() {
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
-  const [bannerLoaded, setBannerLoaded] = useState(false);
 
   return (
     <main>
@@ -151,9 +150,10 @@ export default function Macieet() {
           1. LANDING BANNER (2744x1080 Space)
           ──────────────────────────────────────────────────────── */}
       <section className="macieet-hero" aria-label="MACIEET Hero Banner">
-        {/* Banner image: When banner.webp is uploaded to /uploads/macieet/banner.webp, it loads automatically */}
+        {/* React 19 hoists this to <head> so the banner starts downloading before the page renders */}
+        <link rel="preload" as="image" href="/uploads/macieet.webp" type="image/webp" fetchPriority="high" />
         <img
-          src="/uploads/macieet/banner.webp"
+          src="/uploads/macieet.webp"
           alt="Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology (MACIEET)"
           className="macieet-hero__img"
           width="2744"
@@ -161,26 +161,7 @@ export default function Macieet() {
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          onLoad={() => setBannerLoaded(true)}
-          onError={() => setBannerLoaded(false)}
-          style={{ display: bannerLoaded ? 'block' : 'none' }}
         />
-
-        {/* 2744x1080 Placeholder container active while banner graphic is prepared */}
-        {!bannerLoaded && (
-          <div className="macieet-hero__placeholder">
-            <img
-              src="/uploads/macieet/macieet-logo.jpg"
-              alt="MACIEET Emblem"
-              className="macieet-hero__placeholder-logo"
-            />
-            <span className="macieet-hero__placeholder-badge">2744 &times; 1080 Banner Space</span>
-            <h1 className="macieet-hero__placeholder-title">
-              Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology
-            </h1>
-          </div>
-        )}
-
         <h1 className="visually-hidden">
           Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology (MACIEET), NIT Raipur
         </h1>
