@@ -63,15 +63,45 @@ const boardMembers: BoardMember[] = [
   },
 ];
 
+const partners = [
+  {
+    name: 'Motilal Oswal Foundation',
+    logo: '/uploads/macieet/motilal-oswal.png',
+    accentColor: '#004b87',
+    desc: 'Providing financial endowment and strategic industry advisory to support high-growth research and infrastructure.',
+  },
+  {
+    name: 'Government of Chhattisgarh',
+    logo: '/uploads/macieet/cg-govt.png',
+    accentColor: '#ea580c',
+    desc: 'Enabling state level policy support, local ecosystem integration, and skilling outreach for regional talent.',
+  },
+  {
+    name: 'NIT Raipur',
+    logo: '/uploads/macieet/nit-raipur.png',
+    accentColor: '#1e3a8a',
+    desc: 'Hosting the incubator and labs inside the campus, offering deep technical expertise and academic research access.',
+  },
+];
+
+const proposedDesignImages = [
+  { src: '/uploads/macieet/design/1.webp', title: 'Proposed Facility Design 1' },
+  { src: '/uploads/macieet/design/2.webp', title: 'Proposed Facility Design 2' },
+  { src: '/uploads/macieet/design/3.webp', title: 'Proposed Facility Design 3' },
+  { src: '/uploads/macieet/design/4.webp', title: 'Proposed Facility Design 4' },
+  { src: '/uploads/macieet/design/5.webp', title: 'Proposed Facility Design 5' },
+  { src: '/uploads/macieet/design/6.webp', title: 'Proposed Facility Design 6' },
+];
+
 const labs = [
-  { id: '01', title: 'Incubation Center', desc: 'Pre-incubation and incubation workspace facilities for startups.' },
-  { id: '02', title: 'Cleantech & Sustainability Lab', desc: 'Focus on green energy, waste reduction, and eco-friendly technologies.' },
-  { id: '03', title: '3D Printing & Additive Manufacturing Lab', desc: 'Advanced printing equipment for rapid prototyping and industrial design.' },
-  { id: '04', title: 'Robotics & Automation Lab', desc: 'Skilling and programming resources for industrial automation systems.' },
-  { id: '05', title: 'AR-VR & IoT Lab', desc: 'Smart systems, sensors, and augmented/virtual reality development engines.' },
-  { id: '06', title: 'AI & ML Labs', desc: 'High-performance computing for artificial intelligence and machine learning models.' },
-  { id: '07', title: 'Data Analytics & Computing Equipment Lab', desc: 'Analytics infrastructure for big data processing and business intelligence.' },
-  { id: '08', title: 'Blockchain & Cybersecurity Lab', desc: 'Encrypted storage development and system vulnerability testing suites.' },
+  { id: '01', tag: 'Startup Incubation', title: 'Incubation Center', desc: 'Pre-incubation and incubation workspace facilities for startups.' },
+  { id: '02', tag: 'CleanTech & Energy', title: 'Cleantech & Sustainability Lab', desc: 'Focus on green energy, waste reduction, and eco-friendly technologies.' },
+  { id: '03', tag: 'Rapid Prototyping', title: '3D Printing & Additive Manufacturing Lab', desc: 'Advanced printing equipment for rapid prototyping and industrial design.' },
+  { id: '04', tag: 'Robotics & Automation', title: 'Robotics & Automation Lab', desc: 'Skilling and programming resources for industrial automation systems.' },
+  { id: '05', tag: 'IoT & Immersive Tech', title: 'AR-VR & IoT Lab', desc: 'Smart systems, sensors, and augmented/virtual reality development engines.' },
+  { id: '06', tag: 'AI & DeepTech', title: 'AI & ML Labs', desc: 'High-performance computing for artificial intelligence and machine learning models.' },
+  { id: '07', tag: 'Data & High Compute', title: 'Data Analytics & Computing Equipment Lab', desc: 'Analytics infrastructure for big data processing and business intelligence.' },
+  { id: '08', tag: 'Cybersecurity & Web3', title: 'Blockchain & Cybersecurity Lab', desc: 'Encrypted storage development and system vulnerability testing suites.' },
 ];
 
 const galleryImages = [
@@ -81,51 +111,31 @@ const galleryImages = [
   { src: '/uploads/2025/09/WhatsApp-Image-2025-09-16-at-15.39.26.jpeg', title: 'Lab Launch Event' },
 ];
 
-// Icons
-const AwardIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="8" r="7" />
-    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-  </svg>
-);
-
-const ShieldIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-  </svg>
-);
-
-const BookOpenIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-  </svg>
-);
-
+// Clean Icons
 const MapPinIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
     <circle cx="12" cy="10" r="3" />
   </svg>
 );
 
-const MailIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-    <polyline points="22,6 12,13 2,6" />
-  </svg>
-);
-
 const GlobeIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <circle cx="12" cy="12" r="10" />
     <line x1="2" y1="12" x2="22" y2="12" />
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
   </svg>
 );
 
+const MailIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
+  </svg>
+);
+
 const CloseIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
@@ -133,80 +143,175 @@ const CloseIcon = () => (
 
 export default function Macieet() {
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
+  const [bannerLoaded, setBannerLoaded] = useState(false);
 
   return (
     <main>
-      {/* Page Hero */}
-      <div className="page-hero" style={{ backgroundImage: `url(${driveImageUrl('/uploads/2023/01/10865944_1520194588202891_6950284804550590165_o.jpg')})` }}>
-        <div className="page-hero__overlay" />
-        <div className="page-hero__content">
-          <h1 className="page-hero__title">MACIEET</h1>
-          <p className="page-hero__breadcrumb">
-            <a href="/">Home</a> &rsaquo; Centre of Excellence
-          </p>
-        </div>
-      </div>
+      {/* ────────────────────────────────────────────────────────
+          1. LANDING BANNER (2744x1080 Space)
+          ──────────────────────────────────────────────────────── */}
+      <section className="macieet-hero" aria-label="MACIEET Hero Banner">
+        {/* Banner image: When banner.webp is uploaded to /uploads/macieet/banner.webp, it loads automatically */}
+        <img
+          src="/uploads/macieet/banner.webp"
+          alt="Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology (MACIEET)"
+          className="macieet-hero__img"
+          width="2744"
+          height="1080"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          onLoad={() => setBannerLoaded(true)}
+          onError={() => setBannerLoaded(false)}
+          style={{ display: bannerLoaded ? 'block' : 'none' }}
+        />
 
-      {/* About Section */}
-      <section className="section" style={{ paddingBottom: '30px' }}>
+        {/* 2744x1080 Placeholder container active while banner graphic is prepared */}
+        {!bannerLoaded && (
+          <div className="macieet-hero__placeholder">
+            <img
+              src="/uploads/macieet/macieet-logo.jpg"
+              alt="MACIEET Emblem"
+              className="macieet-hero__placeholder-logo"
+            />
+            <span className="macieet-hero__placeholder-badge">2744 &times; 1080 Banner Space</span>
+            <h1 className="macieet-hero__placeholder-title">
+              Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology
+            </h1>
+          </div>
+        )}
+
+        <h1 className="visually-hidden">
+          Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology (MACIEET), NIT Raipur
+        </h1>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────
+          2. ABOUT MACIEET
+          ──────────────────────────────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#ffffff' }}>
         <div className="container">
           <div className="section-header section-header--center">
-            <span className="section-eyebrow">Joint Venture</span>
+            <span className="section-eyebrow">Overview</span>
             <h2 className="section-title--lg">About MACIEET</h2>
             <hr className="section-divider section-divider--center" />
           </div>
 
-          <div className="text-editor" style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center', fontSize: '1.05rem', color: 'var(--color-text-dark)', lineHeight: '1.8' }}>
-            <p>
-              Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology (MACIEET) is being established jointly by <strong>Motilal Oswal Foundation</strong>, the <strong>Government of Chhattisgarh</strong>, and <strong>NIT Raipur</strong> at the NIT Raipur Campus through its Section-8 Company - NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE), to support start-ups and conduct skilling programs in emerging technologies.
-            </p>
-          </div>
+          <div className="macieet-about-grid">
+            <div className="macieet-about__body">
+              <p className="macieet-about__lead">
+                Smt. Mithilesh Agrawal Centre of Excellence for Innovation &amp; Entrepreneurship in Engineering &amp; Technology (MACIEET) is being established jointly by <strong>Motilal Oswal Foundation</strong>, the <strong>Government of Chhattisgarh</strong>, and <strong>NIT Raipur</strong>.
+              </p>
+              <p>
+                Operating at the NIT Raipur Campus through its Section-8 Company — <strong>NIT Raipur Foundation for Innovation &amp; Entrepreneurship (NITRRFIE)</strong>, the Centre is dedicated to incubating transformative start-ups, fostering deep-tech research, and conducting world-class skilling programs in emerging technologies across the region.
+              </p>
+            </div>
 
-          <div className="coe-partners">
-            <div className="coe-partner-card">
-              <div className="coe-partner-card__icon-box">
-                <AwardIcon />
-              </div>
-              <h3 className="coe-partner-card__title">Motilal Oswal Foundation</h3>
-              <p className="coe-partner-card__desc">
-                Providing financial endowment and strategic industry advisory to support high-growth research and infrastructure.
-              </p>
-            </div>
-            <div className="coe-partner-card">
-              <div className="coe-partner-card__icon-box">
-                <ShieldIcon />
-              </div>
-              <h3 className="coe-partner-card__title">Government of Chhattisgarh</h3>
-              <p className="coe-partner-card__desc">
-                Enabling state level policy support, local ecosystem integration, and skilling outreach for regional talent.
-              </p>
-            </div>
-            <div className="coe-partner-card">
-              <div className="coe-partner-card__icon-box">
-                <BookOpenIcon />
-              </div>
-              <h3 className="coe-partner-card__title">NIT Raipur</h3>
-              <p className="coe-partner-card__desc">
-                Hosting the incubator and labs inside the campus, offering deep technical expertise and academic research access.
+            <div className="macieet-about__emblem-card">
+              <img
+                src="/uploads/macieet/macieet-logo.jpg"
+                alt="MACIEET Official Seal"
+                className="macieet-about__emblem-img"
+              />
+              <h3 className="macieet-about__emblem-title">MACIEET</h3>
+              <p className="macieet-about__emblem-sub">
+                Joint initiative of Motilal Oswal Foundation, Government of Chhattisgarh &amp; NIT Raipur
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Governing Board */}
-      <section className="section" style={{ background: 'var(--color-bg)', paddingTop: '64px', paddingBottom: '64px' }}>
+      {/* ────────────────────────────────────────────────────────
+          3. ESTABLISHED JOINTLY BY
+          ──────────────────────────────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#f8fafc' }}>
         <div className="container">
           <div className="section-header section-header--center">
-            <span className="section-eyebrow">Strategic Direction</span>
+            <span className="section-eyebrow">Tripartite Collaboration</span>
+            <h2 className="section-title--lg">Established Jointly By</h2>
+            <hr className="section-divider section-divider--center" />
+          </div>
+
+          <div className="macieet-partners-grid">
+            {partners.map((p, i) => (
+              <div
+                key={i}
+                className="macieet-partner-card"
+                style={{ '--partner-accent': p.accentColor } as React.CSSProperties}
+              >
+                <div className="macieet-partner-card__logo-frame">
+                  <img
+                    src={p.logo}
+                    alt={`${p.name} logo`}
+                    className="macieet-partner-card__logo"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="macieet-partner-card__title">{p.name}</h3>
+                <p className="macieet-partner-card__desc">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────
+          4. PROPOSED DESIGN (Photos auto-scroll marquee)
+          ──────────────────────────────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '64px', paddingBottom: '48px', background: '#ffffff' }}>
+        <div className="container">
+          <div className="section-header section-header--center">
+            <span className="section-eyebrow">Architectural Vision</span>
+            <h2 className="section-title--lg">Proposed Design</h2>
+            <hr className="section-divider section-divider--center" />
+          </div>
+        </div>
+
+        {/* Continuous auto-scroll marquee slider */}
+        <div className="macieet-design-slider">
+          <div className="macieet-design-viewport">
+            <div className="macieet-design-track">
+              {/* Doubled array for seamless -50% infinite keyframe loop */}
+              {[...proposedDesignImages, ...proposedDesignImages].map((img, i) => (
+                <div
+                  key={i}
+                  className="macieet-design-item"
+                  onClick={() => setActivePhoto(img.src)}
+                  title="Click to view full preview"
+                  aria-hidden={i >= proposedDesignImages.length}
+                >
+                  <img
+                    src={img.src}
+                    alt={i < proposedDesignImages.length ? img.title : ''}
+                    width="1920"
+                    height="1080"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="macieet-design-item__badge">Proposed Concept</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────
+          5. GOVERNING BOARD
+          ──────────────────────────────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#f8fafc' }}>
+        <div className="container">
+          <div className="section-header section-header--center">
+            <span className="section-eyebrow">Leadership &amp; Advisory</span>
             <h2 className="section-title--lg">Governing Board</h2>
             <hr className="section-divider section-divider--center" />
           </div>
 
-          <div className="team-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', marginTop: '40px' }}>
+          <div className="macieet-board-grid">
             {boardMembers.map((m, i) => (
-              <div key={i} className="team-card">
-                <div className="team-card__avatar">
+              <div key={i} className="macieet-board-card">
+                <div className="macieet-board-card__avatar">
                   <img
                     src={driveImageUrl(m.image)}
                     alt={m.name}
@@ -216,9 +321,60 @@ export default function Macieet() {
                     }}
                   />
                 </div>
-                <div className="team-card__body">
-                  <h3 className="team-card__name">{m.name}</h3>
-                  <p className="team-card__role" style={{ color: 'var(--color-text)', textTransform: 'none', fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0' }}>{m.role}</p>
+                <h3 className="macieet-board-card__name">{m.name}</h3>
+                <p className="macieet-board-card__role">{m.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────
+          6. PROPOSED FACILITIES & LABS
+          ──────────────────────────────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#ffffff' }}>
+        <div className="container">
+          <div className="section-header section-header--center">
+            <span className="section-eyebrow">Skilling &amp; Infrastructure</span>
+            <h2 className="section-title--lg">Proposed Facilities &amp; Labs</h2>
+            <hr className="section-divider section-divider--center" />
+          </div>
+
+          <div className="macieet-labs-grid">
+            {labs.map((l, i) => (
+              <div key={i} className="macieet-lab-card">
+                <span className="macieet-lab-card__num">{l.id}</span>
+                <span className="macieet-lab-card__tag">{l.tag}</span>
+                <h3 className="macieet-lab-card__title">{l.title}</h3>
+                <p className="macieet-lab-card__desc">{l.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────
+          7. GALLERY (Static 4 photos, No auto-scroll)
+          ──────────────────────────────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#f8fafc' }}>
+        <div className="container">
+          <div className="section-header section-header--center">
+            <span className="section-eyebrow">Photo Highlights</span>
+            <h2 className="section-title--lg">Gallery</h2>
+            <hr className="section-divider section-divider--center" />
+          </div>
+
+          <div className="macieet-gallery-grid">
+            {galleryImages.map((img, i) => (
+              <div
+                key={i}
+                className="macieet-gallery-item"
+                onClick={() => setActivePhoto(driveImageUrl(img.src))}
+                title="Click to view full preview"
+              >
+                <img src={driveImageUrl(img.src)} alt={img.title} loading="lazy" />
+                <div className="macieet-gallery-item__overlay">
+                  <span className="macieet-gallery-item__caption">{img.title}</span>
                 </div>
               </div>
             ))}
@@ -226,49 +382,10 @@ export default function Macieet() {
         </div>
       </section>
 
-      {/* Proposed Facilities */}
-      <section className="section" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="container">
-          <div className="section-header section-header--center">
-            <span className="section-eyebrow">Skilling & Infrastructure</span>
-            <h2 className="section-title--lg">Proposed Facilities &amp; Labs</h2>
-            <hr className="section-divider section-divider--center" />
-          </div>
-
-          <div className="coe-lab-grid">
-            {labs.map((l, i) => (
-              <div key={i} className="coe-lab-card">
-                <span className="coe-lab-card__num">{l.id}</span>
-                <h3 className="coe-lab-card__title">{l.title}</h3>
-                <p className="coe-lab-card__desc">{l.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Laboratory Previews / Gallery */}
-      <section className="section" style={{ background: 'var(--color-bg)', paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="container">
-          <div className="section-header section-header--center">
-            <span className="section-eyebrow">Event Highlights</span>
-            <h2 className="section-title--lg">MACIEET Gallery</h2>
-            <hr className="section-divider section-divider--center" />
-          </div>
-
-          <div className="coe-gallery-grid">
-            {galleryImages.map((img, i) => (
-              <div key={i} className="coe-gallery-item" onClick={() => setActivePhoto(driveImageUrl(img.src))}>
-                <img src={driveImageUrl(img.src)} alt={img.title} loading="lazy" />
-                <div className="coe-gallery-item__overlay" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="section" style={{ paddingTop: '64px', paddingBottom: '80px' }}>
+      {/* ────────────────────────────────────────────────────────
+          8. CONTACT US
+          ──────────────────────────────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '64px', paddingBottom: '80px', background: '#ffffff' }}>
         <div className="container">
           <div className="section-header section-header--center">
             <span className="section-eyebrow">Get In Touch</span>
@@ -276,24 +393,24 @@ export default function Macieet() {
             <hr className="section-divider section-divider--center" />
           </div>
 
-          <div className="coe-contact-strip" style={{ marginTop: '40px' }}>
-            <div className="coe-contact-item">
-              <div className="coe-contact-item__icon">
+          <div className="macieet-contact-grid">
+            <div className="macieet-contact-card">
+              <div className="macieet-contact-card__icon">
                 <MapPinIcon />
               </div>
-              <div className="coe-contact-item__body">
+              <div className="macieet-contact-card__content">
                 <h3>Address</h3>
                 <p>
-                  MACIEET, NIT Raipur Campus, Raipur, Chhattisgarh – 492010
+                  MACIEET, NIT Raipur Campus, G.E. Road, Raipur, Chhattisgarh – 492010
                 </p>
               </div>
             </div>
 
-            <div className="coe-contact-item">
-              <div className="coe-contact-item__icon">
+            <div className="macieet-contact-card">
+              <div className="macieet-contact-card__icon">
                 <GlobeIcon />
               </div>
-              <div className="coe-contact-item__body">
+              <div className="macieet-contact-card__content">
                 <h3>Website</h3>
                 <p>
                   <a href="/" target="_blank" rel="noopener noreferrer">
@@ -303,11 +420,11 @@ export default function Macieet() {
               </div>
             </div>
 
-            <div className="coe-contact-item">
-              <div className="coe-contact-item__icon">
+            <div className="macieet-contact-card">
+              <div className="macieet-contact-card__icon">
                 <MailIcon />
               </div>
-              <div className="coe-contact-item__body">
+              <div className="macieet-contact-card__content">
                 <h3>Email</h3>
                 <p>
                   <a href="mailto:nitrrfie@nitrr.ac.in">
@@ -317,19 +434,40 @@ export default function Macieet() {
               </div>
             </div>
           </div>
+
+          <div className="macieet-contact-actions">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdxsTL_dAOkdw2d-boXCrk3B513FtuM_kIJhSQJdv3HhOcfFA/viewform?usp=dialog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="macieet-btn-primary"
+            >
+              Apply for Incubation &rarr;
+            </a>
+            <a
+              href="mailto:nitrrfie@nitrr.ac.in"
+              className="macieet-btn-secondary"
+            >
+              Partner with MACIEET
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal for Proposed Design and Gallery Photos */}
       {activePhoto && (
         <div className="gallery-lightbox" onClick={() => setActivePhoto(null)}>
-          <button className="gallery-lightbox__close" onClick={() => setActivePhoto(null)} aria-label="Close">
+          <button
+            className="gallery-lightbox__close"
+            onClick={() => setActivePhoto(null)}
+            aria-label="Close Preview"
+          >
             <CloseIcon />
           </button>
           <div className="gallery-lightbox__content" onClick={(e) => e.stopPropagation()}>
             <img
               src={activePhoto}
-              alt="MACIEET Gallery Preview"
+              alt="MACIEET Full Preview"
               className="gallery-lightbox__img"
             />
           </div>
